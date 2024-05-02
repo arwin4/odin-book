@@ -1,8 +1,17 @@
 import React from 'react';
-import PostCarousel from '../components/landing/postCarousel/PostCarousel';
-import CallToAction from '../components/landing/CallToAction';
+import useAuth from '@hooks/useAuth';
+import { Navigate, useLocation } from 'react-router-dom';
+import PostCarousel from '@components/landing/postCarousel/PostCarousel';
+import CallToAction from '@components/landing/CallToAction';
 
 export default function Landing() {
+  const { authed } = useAuth();
+  const { state } = useLocation();
+
+  if (authed) {
+    return <Navigate to={state?.path || '/'} />;
+  }
+
   return (
     <>
       <h1>odinstagram</h1>
