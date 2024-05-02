@@ -19,6 +19,7 @@ module.exports = {
           ['@utils', './src/utils'],
           ['@pages', './src/pages'],
           ['@hooks', './src/hooks'],
+          ['@propTypes', './src/propTypes'],
           ['@assets', './src/assets'],
         ],
         extensions: ['.js', '.jsx'],

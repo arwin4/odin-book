@@ -1,5 +1,5 @@
 import React from 'react';
-import postPropType from '../../../propTypes/post';
+import postPropType from '@propTypes/post';
 
 export default function MediaContainer({ post }) {
   const { imageUrl } = post.attributes;

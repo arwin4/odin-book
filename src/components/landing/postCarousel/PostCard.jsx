@@ -1,8 +1,8 @@
 import React from 'react';
+import postPropType from '@propTypes/post';
 import AuthorLabel from './AuthorLabel';
 import MediaContainer from './MediaContainer';
 import Meta from './Meta';
-import postPropType from '../../../propTypes/post';
 
 export default function PostCard({ post }) {
   return (

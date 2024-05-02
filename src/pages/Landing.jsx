@@ -1,6 +1,6 @@
 import React from 'react';
-import PostCarousel from '../components/landing/postCarousel/PostCarousel';
-import CallToAction from '../components/landing/CallToAction';
+import PostCarousel from '@components/landing/postCarousel/PostCarousel';
+import CallToAction from '@components/landing/CallToAction';
 
 export default function Landing() {
   return (
