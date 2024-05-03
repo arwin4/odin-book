@@ -15,6 +15,7 @@ export default function Landing() {
   return (
     <>
       <h1>odinstagram</h1>
+      <h2>slogan</h2>
       {/* TODO: Logo */}
       <PostCarousel />
       <CallToAction />

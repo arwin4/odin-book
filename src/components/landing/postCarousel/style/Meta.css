@@ -1,0 +1,10 @@
+.meta {
+  .likes {
+    color: gray;
+
+    .count {
+      color: initial;
+      font-weight: bold;
+    }
+  }
+}

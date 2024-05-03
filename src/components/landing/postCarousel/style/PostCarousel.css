@@ -1,0 +1,7 @@
+.post-carousel {
+  display: flex;
+  height: 400px;
+  justify-content: flex-end;
+
+  background-color: var(--background-color);
+}

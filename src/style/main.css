@@ -1,0 +1,16 @@
+html {
+  /* == Variables == */
+
+  /* Colors */
+  /* --background-color: #003566;
+  --foreground-color: #1d619f;
+  --accent-color: #ffd60a;
+  --text-color: azure; */
+  --background-color: #99d6ea;
+
+  /* Others */
+  --shadow: 10px 10px 36px -8px hsl(0, 0%, 0%, 0.5);
+  --general-spacing: 20px;
+
+  font-family: 'Red Hat Display', sans-serif;
+}

@@ -1,10 +1,15 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import PostCard from './PostCard';
+import './style/PostCarousel.css';
 
 export default function PostCarousel() {
   const posts = useLoaderData();
-  console.log(posts);
 
-  return posts.map((post) => <PostCard post={post} key={post.id} />);
+  return (
+    <div className="post-carousel">
+      <PostCard posts={posts} />
+    </div>
+  );
 }
