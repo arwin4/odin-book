@@ -9,7 +9,7 @@ html {
   --background-color: #99d6ea;
 
   /* Others */
-  --shadow: 10px 10px 36px -8px hsl(0, 0%, 0%, 0.5);
+  --shadow: 2px 1px 0px 0px hsl(0, 0%, 0%, 0.6);
   --general-spacing: 20px;
 
   font-family: 'Red Hat Display', sans-serif;

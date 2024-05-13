@@ -1,7 +1,12 @@
 .post-carousel {
   display: flex;
   height: 400px;
-  justify-content: flex-end;
+  justify-content: center;
 
   background-color: var(--background-color);
+
+  .post-card-wrapper {
+    position: relative;
+    right: 20px;
+  }
 }

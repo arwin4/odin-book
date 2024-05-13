@@ -9,7 +9,9 @@ export default function PostCarousel() {
 
   return (
     <div className="post-carousel">
-      <PostCard posts={posts} />
+      <div className="post-card-wrapper">
+        <PostCard posts={posts} />
+      </div>
     </div>
   );
 }

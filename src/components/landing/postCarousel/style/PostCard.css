@@ -8,18 +8,16 @@
 
   gap: 10px;
 
-  border-radius: 20px;
+  border-radius: 2px;
   padding: 10px 0;
 
+  border: 2px solid black;
   box-shadow: var(--shadow);
-  background-color: white;
+
+  background-color: gold;
 
   .nested-post {
     position: relative;
-    right: 30px;
-  }
-
-  .media-container {
-    max-width: 100%;
+    right: 15px;
   }
 }
