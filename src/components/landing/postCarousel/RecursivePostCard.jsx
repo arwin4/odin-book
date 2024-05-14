@@ -6,7 +6,7 @@ import MediaContainer from './MediaContainer';
 import Meta from './Meta';
 import './style/PostCard.css';
 
-export default function PostCard({ posts }) {
+export default function RecursivePostCard({ posts }) {
   let leftPosts;
   if (posts.length > 0) {
     leftPosts = [...posts];
@@ -17,7 +17,7 @@ export default function PostCard({ posts }) {
   return (
     <div className="post-card">
       <div className="nested-post">
-        {leftPosts.length > 0 && <PostCard posts={leftPosts} />}
+        {leftPosts.length > 0 && <RecursivePostCard posts={leftPosts} />}
       </div>
       <AuthorLabel post={post} />
       <MediaContainer post={post} />
@@ -27,6 +27,6 @@ export default function PostCard({ posts }) {
 }
 
 /* Prop Types */
-PostCard.propTypes = {
+RecursivePostCard.propTypes = {
   posts: PropTypes.arrayOf(postPropType.isRequired).isRequired,
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Landing, { landingLoader } from '@pages/Landing';
 import Login from '@pages/Login';
-import Home from '@pages/Home';
+import Home, { homeLoader } from '@pages/Home';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -15,7 +15,7 @@ export default function Router() {
         {
           index: true,
           element: <Home />,
-          // loader: homeLoader
+          loader: homeLoader,
         },
       ],
     },

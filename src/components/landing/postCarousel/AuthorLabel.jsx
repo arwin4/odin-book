@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 import { formatRelative } from 'date-fns';
+import postPropType from '@propTypes/post';
 
 export default function AuthorLabel({ post }) {
   const { firstName } = post.relationships.author.data.attributes;
@@ -12,7 +11,12 @@ export default function AuthorLabel({ post }) {
 
   return (
     <>
-      Posted by {firstName}, {formattedDate}
+      {firstName} - {formattedDate}
     </>
   );
 }
+
+/* Prop Types */
+AuthorLabel.propTypes = {
+  post: postPropType.isRequired,
+};

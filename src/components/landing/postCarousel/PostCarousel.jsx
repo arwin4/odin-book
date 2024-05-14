@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import PostCard from './PostCard';
+import RecursivePostCard from './RecursivePostCard';
 import './style/PostCarousel.css';
 
 export default function PostCarousel() {
@@ -10,7 +10,7 @@ export default function PostCarousel() {
   return (
     <div className="post-carousel">
       <div className="post-card-wrapper">
-        <PostCard posts={posts} />
+        <RecursivePostCard posts={posts} />
       </div>
     </div>
   );
