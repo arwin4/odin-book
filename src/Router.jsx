@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Landing, { landingLoader } from '@pages/Landing';
 import Login from '@pages/Login';
 import Home, { homeLoader } from '@pages/Home';
+import User, { userLoader } from '@pages/User';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -18,6 +19,11 @@ export default function Router() {
           loader: homeLoader,
         },
       ],
+    },
+    {
+      path: 'user/:username',
+      element: <User />,
+      loader: userLoader,
     },
     {
       path: '/welcome',
