@@ -4,6 +4,7 @@ import { useFetcher, useLoaderData } from 'react-router-dom';
 import './style/UserCard.css';
 
 import userPropType from '@propTypes/user';
+import getCurrentUser from '@utils/getCurrentUser';
 
 export default function User() {
   const user = useLoaderData();
@@ -31,15 +32,31 @@ function UserCard({ user }) {
 function FollowButton({ user }) {
   const fetcher = useFetcher();
 
+  const currentUser = getCurrentUser();
+  const { followers } = user.attributes;
+  const isFollowing = !!followers.includes(currentUser.id);
+
   return (
-    <fetcher.Form className="follow-user" method="POST">
-      <button
-        type="submit"
-        name="username"
-        value={user.attributes.normalizedUsername}
-      >
-        Follow
-      </button>
+    <fetcher.Form className="follow-user">
+      {isFollowing ? (
+        <button
+          type="submit"
+          name="username"
+          value={user.attributes.normalizedUsername}
+          formMethod="DELETE"
+        >
+          Unfollow
+        </button>
+      ) : (
+        <button
+          type="submit"
+          name="username"
+          value={user.attributes.normalizedUsername}
+          formMethod="POST"
+        >
+          Follow
+        </button>
+      )}
     </fetcher.Form>
   );
 }
@@ -89,15 +106,12 @@ export async function userLoader({ params }) {
 }
 
 export async function userAction({ request }) {
-  // follow request
-  // unfollow request
-
   const data = await request.formData();
   const userToFollow = data.get('username');
 
   let res;
 
-  // Handle add friend
+  // Handle follow user
   if (request.method === 'POST') {
     res = await fetch(
       `${import.meta.env.VITE_API_SERVER_URL}/users/${userToFollow}/followers`,
@@ -111,8 +125,19 @@ export async function userAction({ request }) {
     );
   }
 
-  console.log(res.status);
-  console.log(res.body);
+  // Handle unfollow user
+  if (request.method === 'DELETE') {
+    res = await fetch(
+      `${import.meta.env.VITE_API_SERVER_URL}/users/${userToFollow}/followers`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${getJwt()}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+  }
 
   if (!res.ok) {
     const { errors } = await res.json();
