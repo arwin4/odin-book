@@ -75,9 +75,11 @@ function NameWrapper({ user }) {
 }
 
 function FollowerCount({ user }) {
+  const numberOfFollowers = user.attributes.followers.length;
   return (
     <div className="follower-count">
-      {user.attributes.followers.length} followers
+      {numberOfFollowers}
+      {numberOfFollowers === 1 ? ' follower' : ' followers'}
     </div>
   );
 }
