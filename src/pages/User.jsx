@@ -1,6 +1,6 @@
 import getJwt from '@utils/getJwt';
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useFetcher, useLoaderData } from 'react-router-dom';
 import './style/UserCard.css';
 
 import userPropType from '@propTypes/user';
@@ -23,8 +23,24 @@ function UserCard({ user }) {
       <NameWrapper user={user} />
       <FollowerCount user={user} />
       <Bio user={user} />
-      {/* <FollowButton /> */}
+      <FollowButton user={user} />
     </div>
+  );
+}
+
+function FollowButton({ user }) {
+  const fetcher = useFetcher();
+
+  return (
+    <fetcher.Form className="follow-user" method="POST">
+      <button
+        type="submit"
+        name="username"
+        value={user.attributes.normalizedUsername}
+      >
+        Follow
+      </button>
+    </fetcher.Form>
   );
 }
 
@@ -72,6 +88,41 @@ export async function userLoader({ params }) {
   return parsedFetchedUser.data;
 }
 
+export async function userAction({ request }) {
+  // follow request
+  // unfollow request
+
+  const data = await request.formData();
+  const userToFollow = data.get('username');
+
+  let res;
+
+  // Handle add friend
+  if (request.method === 'POST') {
+    res = await fetch(
+      `${import.meta.env.VITE_API_SERVER_URL}/users/${userToFollow}/followers`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${getJwt()}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+  }
+
+  console.log(res.status);
+  console.log(res.body);
+
+  if (!res.ok) {
+    const { errors } = await res.json();
+    return errors;
+  }
+
+  // Prevent fetcher.data (error) from persisting
+  return null;
+}
+
 /* Prop Types */
 UserCard.propTypes = {
   user: userPropType.isRequired,
@@ -86,5 +137,9 @@ FollowerCount.propTypes = {
 };
 
 Bio.propTypes = {
+  user: userPropType.isRequired,
+};
+
+FollowButton.propTypes = {
   user: userPropType.isRequired,
 };
