@@ -14,7 +14,7 @@ export default function User() {
     <>
       <h1>Home</h1>
       <UserCard user={user} />
-      <UserPosts posts={posts} />
+      <UserPosts posts={posts} user={user} />
     </>
   );
 }
