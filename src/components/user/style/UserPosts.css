@@ -1,0 +1,16 @@
+.user-posts {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, auto)); */
+  /* grid-template-rows: repeat(auto-fit, 290px); */
+
+  gap: 20px;
+
+  > * {
+    justify-self: center;
+    width: 90vw;
+
+    box-shadow:
+      3px 3px 0px 0px black,
+      -3px -3px 0px 0px gold;
+  }
+}

@@ -5,14 +5,16 @@ import './style/UserCard.css';
 
 import userPropType from '@propTypes/user';
 import getCurrentUser from '@utils/getCurrentUser';
+import UserPosts from '@components/user/UserPosts';
 
 export default function User() {
-  const user = useLoaderData();
+  const { user, posts } = useLoaderData();
 
   return (
     <>
       <h1>Home</h1>
       <UserCard user={user} />
+      <UserPosts posts={posts} />
     </>
   );
 }
@@ -91,20 +93,26 @@ function Bio({ user }) {
 export async function userLoader({ params }) {
   const { username } = params;
 
-  const res = await fetch(
-    `${import.meta.env.VITE_API_SERVER_URL}/users/${username}`,
-    {
+  const res = await Promise.all([
+    fetch(`${import.meta.env.VITE_API_SERVER_URL}/users/${username}`, {
       method: 'GET',
       headers: { Authorization: `Bearer ${getJwt()}` },
-    },
-  );
+    }),
+    fetch(`${import.meta.env.VITE_API_SERVER_URL}/posts?username=${username}`, {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${getJwt()}` },
+    }),
+  ]);
 
   if (!res.ok) {
     // const { errors } = await res.json();
     // throw new Response(errors[0].title, { status: res.status });
   }
-  const parsedFetchedUser = await res.json();
-  return parsedFetchedUser.data;
+
+  const parsedFetchedUser = await res[0].json();
+  const parsedFetchedPosts = await res[1].json();
+
+  return { user: parsedFetchedUser.data, posts: parsedFetchedPosts.data };
 }
 
 export async function userAction({ request }) {
