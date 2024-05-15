@@ -19,6 +19,11 @@
 
   background-color: gold;
 
+  .media-container {
+    /* Prevent layout shift */
+    height: 187.5px;
+  }
+
   .nested-post {
     position: relative;
     right: 15px;
