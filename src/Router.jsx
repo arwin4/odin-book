@@ -4,6 +4,7 @@ import Landing, { landingLoader } from '@pages/Landing';
 import Login from '@pages/Login';
 import Home, { homeLoader } from '@pages/Home';
 import User, { userAction, userLoader } from '@pages/User';
+import Post, { postLoader } from '@pages/Post';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -25,6 +26,12 @@ export default function Router() {
       element: <User />,
       loader: userLoader,
       action: userAction,
+    },
+    {
+      path: 'post/:id',
+      element: <Post />,
+      loader: postLoader,
+      // action: postAction,
     },
     {
       path: '/welcome',
