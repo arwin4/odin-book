@@ -57,11 +57,7 @@ export default function NewPostForm() {
       >
         <div className="instruction">Drop an image here or click to upload</div>
 
-        {isFileValid(file) ? (
-          <img src={URL.createObjectURL(file)} alt="" />
-        ) : (
-          ''
-        )}
+        {isFileValid(file) && <img src={URL.createObjectURL(file)} alt="" />}
 
         {inputRef?.current?.files.length > 0 && !isFileValid(file) && (
           <div className="filesize-warning">
