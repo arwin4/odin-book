@@ -9,7 +9,6 @@ import './style/NewPost.css';
  * - allow undoing file selection
  * - display upload errors
  * - handle wrong file type
- * - warn files bigger than 10 MiB
  */
 
 export default function NewPostForm() {
@@ -62,6 +61,12 @@ export default function NewPostForm() {
           <img src={URL.createObjectURL(file)} alt="" />
         ) : (
           ''
+        )}
+
+        {inputRef?.current?.files.length > 0 && !isFileValid(file) && (
+          <div className="filesize-warning">
+            File is too big. Please select an image smaller than 10 MB.
+          </div>
         )}
 
         <input

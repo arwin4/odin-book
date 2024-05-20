@@ -17,10 +17,14 @@
         display: none;
       }
     }
-  }
 
-  img {
-    max-width: 200px;
-    max-height: 200px;
+    .filesize-warning {
+      font-weight: bolder;
+    }
+
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
   }
 }
