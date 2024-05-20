@@ -1,0 +1,26 @@
+.new-post-form {
+  .dropbox {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+    height: 300px;
+    width: 300px;
+
+    background-color: lavender;
+
+    /* Hide explicit input button and filename */
+    input {
+      color: transparent;
+
+      &::file-selector-button {
+        display: none;
+      }
+    }
+  }
+
+  img {
+    max-width: 200px;
+    max-height: 200px;
+  }
+}

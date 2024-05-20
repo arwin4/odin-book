@@ -1,16 +1,43 @@
 import getJwt from '@utils/getJwt';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Form, redirect, useNavigation } from 'react-router-dom';
 
-export default function NewPost() {
+import './style/NewPost.css';
+
+/**
+ * TODO:
+ * - allow undoing file selection
+ * - display upload errors
+ * - handle wrong file type
+ * - warn files bigger than 10 MiB
+ */
+
+export default function NewPostForm() {
   const navigation = useNavigation();
   const uploading = navigation.state !== 'idle';
 
   const [file, setFile] = useState(null);
+  const inputRef = useRef();
 
-  const handleFile = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+
+    const { dataTransfer } = e;
+    const dropFile = dataTransfer.files[0];
+    setFile(dropFile);
+
+    // Add the image to the input's FileList
+    const newTransfer = new DataTransfer();
+    newTransfer.items.add(dropFile);
+    inputRef.current.files = newTransfer.files;
   };
 
   const isFileValid = (curFile) => {
@@ -20,23 +47,42 @@ export default function NewPost() {
   };
 
   return (
-    <Form method="post" encType="multipart/form-data">
+    <Form className="new-post-form" method="post" encType="multipart/form-data">
+      <label
+        htmlFor="file"
+        className="dropbox"
+        onDragEnter={handleDragEnter}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        onChange={(e) => setFile(e.target.files[0])}
+      >
+        <div className="instruction">Drop an image here or click to upload</div>
+
+        {isFileValid(file) ? (
+          <img src={URL.createObjectURL(file)} alt="" />
+        ) : (
+          ''
+        )}
+
+        <input
+          type="file"
+          name="file"
+          id="file"
+          accept="image/*"
+          ref={inputRef}
+          required
+        />
+      </label>
       <input
-        type="file"
-        name="file"
-        onChange={handleFile}
-        accept="image/*"
+        type="text"
+        placeholder="Add a description..."
+        name="description"
         required
       />
-      <input type="text" name="description" required />
       <input
         type="submit"
         value={uploading ? 'Uploading...' : 'Upload image'}
         name="submit"
-      />
-      <img
-        src={isFileValid(file) ? URL.createObjectURL(file) : undefined}
-        alt=""
       />
     </Form>
   );
@@ -55,8 +101,6 @@ export async function newPostAction({ request }) {
   formData.append('upload_preset', 'odinstragram-post');
   formData.append('file', file);
 
-  return;
-
   const requestOptions = {
     method: 'POST',
     body: formData,
@@ -73,9 +117,10 @@ export async function newPostAction({ request }) {
     const parsedRes = await res.json();
     imageUrl = parsedRes.secure_url;
   } catch (error) {
-    console.error(error);
+    // TODO: handle error
   }
 
+  // Mock:
   // const imageUrl =
   //   'https://res.cloudinary.com/dg2fuzzhq/image/upload/v1715851737/post/gsxzt0vduusv3dnyp8re.avif';
 
@@ -100,7 +145,6 @@ export async function newPostAction({ request }) {
     });
 
     const parsedRes = await res.json();
-    console.log(parsedRes);
     postId = parsedRes.data.id;
 
     if (!res.ok) {
@@ -112,12 +156,3 @@ export async function newPostAction({ request }) {
 
   return redirect(`/post/${postId}`);
 }
-
-/**
- * TODO:
- *
- * - drag-n-drop
- * - display upload errors
- * - handle wrong file type
- * - warn files bigger than 10 MiB
- */
