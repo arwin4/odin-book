@@ -17,16 +17,28 @@ export default function NewPostForm() {
 
   const [file, setFile] = useState(null);
   const inputRef = useRef();
+  const dropBoxRef = useRef();
 
   const handleDragEnter = (e) => {
+    dropBoxRef.current.classList.add('dragging');
+    e.stopPropagation();
     e.preventDefault();
   };
 
   const handleDragOver = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
+  const handleDragLeave = (e) => {
+    e.stopPropagation();
+    dropBoxRef.current.classList.remove('dragging');
     e.preventDefault();
   };
 
   const handleDrop = (e) => {
+    e.stopPropagation();
+    dropBoxRef.current.classList.remove('dragging');
     e.preventDefault();
 
     const { dataTransfer } = e;
@@ -53,26 +65,32 @@ export default function NewPostForm() {
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        onDragLeave={handleDragLeave}
         onChange={(e) => setFile(e.target.files[0])}
+        ref={dropBoxRef}
       >
-        <div className="instruction">Drop an image here or click to upload</div>
-
-        {isFileValid(file) && <img src={URL.createObjectURL(file)} alt="" />}
-
-        {inputRef?.current?.files.length > 0 && !isFileValid(file) && (
-          <div className="filesize-warning">
-            File is too big. Please select an image smaller than 10 MB.
+        <div className="content-wrapper">
+          <div className="instruction">
+            Drop an image here or click to upload
           </div>
-        )}
 
-        <input
-          type="file"
-          name="file"
-          id="file"
-          accept="image/*"
-          ref={inputRef}
-          required
-        />
+          {isFileValid(file) && <img src={URL.createObjectURL(file)} alt="" />}
+
+          {inputRef?.current?.files.length > 0 && !isFileValid(file) && (
+            <div className="filesize-warning">
+              File is too big. Please select an image smaller than 10 MB.
+            </div>
+          )}
+
+          <input
+            type="file"
+            name="file"
+            id="file"
+            accept="image/*"
+            ref={inputRef}
+            required
+          />
+        </div>
       </label>
       <input
         type="text"
