@@ -20,33 +20,33 @@ export default function Router() {
           element: <Home />,
           loader: homeLoader,
         },
+        {
+          path: 'user/:username',
+          element: <User />,
+          loader: userLoader,
+          action: userAction,
+        },
+        {
+          path: 'post/:id',
+          element: <Post />,
+          loader: postLoader,
+          // action: postAction,
+        },
+        {
+          path: 'new-post',
+          element: <NewPostForm />,
+          action: newPostAction,
+        },
       ],
     },
     {
-      path: 'user/:username',
-      element: <User />,
-      loader: userLoader,
-      action: userAction,
-    },
-    {
-      path: 'post/:id',
-      element: <Post />,
-      loader: postLoader,
-      // action: postAction,
-    },
-    {
-      path: '/welcome',
+      path: 'welcome',
       element: <Landing />,
       loader: landingLoader,
     },
     {
       path: '/login',
       element: <Login />,
-    },
-    {
-      path: '/new-post',
-      element: <NewPostForm />,
-      action: newPostAction,
     },
   ]);
 
