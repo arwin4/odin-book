@@ -70,9 +70,11 @@ export default function NewPostForm() {
         ref={dropBoxRef}
       >
         <div className="content-wrapper">
-          <div className="instruction">
-            Drop an image here or click to upload
-          </div>
+          {!isFileValid(file) && (
+            <div className="instruction">
+              Drop an image here or click to upload
+            </div>
+          )}
 
           {isFileValid(file) && <img src={URL.createObjectURL(file)} alt="" />}
 
