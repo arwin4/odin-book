@@ -93,7 +93,7 @@ function Bio({ user }) {
 export async function userLoader({ params }) {
   const { username } = params;
 
-  const res = await Promise.all([
+  const [userRes, postsRes] = await Promise.all([
     fetch(`${import.meta.env.VITE_API_SERVER_URL}/users/${username}`, {
       method: 'GET',
       headers: { Authorization: `Bearer ${getJwt()}` },
@@ -104,15 +104,22 @@ export async function userLoader({ params }) {
     }),
   ]);
 
-  if (!res.ok) {
-    // const { errors } = await res.json();
-    // throw new Response(errors[0].title, { status: res.status });
+  const [fetchedUser, fetchedPosts] = await Promise.all([
+    userRes.json(),
+    postsRes.json(),
+  ]);
+
+  if (!userRes.ok) {
+    throw new Response(fetchedUser.errors[0].title, { status: userRes.status });
   }
 
-  const parsedFetchedUser = await res[0].json();
-  const parsedFetchedPosts = await res[1].json();
+  if (!postsRes.ok) {
+    throw new Response(fetchedPosts.errors[0].title, {
+      status: postsRes.status,
+    });
+  }
 
-  return { user: parsedFetchedUser.data, posts: parsedFetchedPosts.data };
+  return { user: fetchedUser.data, posts: fetchedPosts.data };
 }
 
 export async function userAction({ request }) {

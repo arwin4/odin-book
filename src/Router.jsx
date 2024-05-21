@@ -6,6 +6,7 @@ import Home, { homeLoader } from '@pages/Home';
 import User, { userAction, userLoader } from '@pages/User';
 import NewPostForm, { newPostAction } from '@pages/NewPost';
 import Post, { postLoader } from '@pages/Post';
+import Error from '@pages/Error';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -25,6 +26,7 @@ export default function Router() {
           element: <User />,
           loader: userLoader,
           action: userAction,
+          errorElement: <Error />,
         },
         {
           path: 'post/:id',
