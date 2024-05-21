@@ -1,9 +1,10 @@
 import React from 'react';
-import { Navigate, useNavigation, useRouteError } from 'react-router-dom';
+import { Link, Navigate, useNavigation, useRouteError } from 'react-router-dom';
 // import './style/Error.css';
 
 export default function Error() {
   const error = useRouteError();
+  console.log(error);
   // console.log(error);
   // console.log(error.status);
   // const navigation = useNavigation();
@@ -18,7 +19,7 @@ export default function Error() {
     case 404:
       return (
         <div className="error">
-          404 Not Found.
+          404: {error.data}. <Link to="/">Back to home</Link>
           {/* {backToChatsBtn} */}
         </div>
       );
