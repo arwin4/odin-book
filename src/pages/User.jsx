@@ -22,7 +22,7 @@ export default function User() {
 function UserCard({ user }) {
   return (
     <div className="user-card">
-      <ProfilePicture />
+      <Avatar user={user} />
       <NameWrapper user={user} />
       <FollowerCount user={user} />
       <Bio user={user} />
@@ -63,8 +63,8 @@ function FollowButton({ user }) {
   );
 }
 
-function ProfilePicture() {
-  // TODO: add profile picture
+function Avatar({ user }) {
+  return <img src={user.attributes.avatarUrl} alt="" className="avatar" />;
 }
 
 function NameWrapper({ user }) {
@@ -167,6 +167,10 @@ export async function userAction({ request }) {
 
 /* Prop Types */
 UserCard.propTypes = {
+  user: userPropType.isRequired,
+};
+
+Avatar.propTypes = {
   user: userPropType.isRequired,
 };
 
