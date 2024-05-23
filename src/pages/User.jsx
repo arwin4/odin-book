@@ -6,6 +6,7 @@ import './style/UserCard.css';
 import userPropType from '@propTypes/user';
 import getCurrentUser from '@utils/getCurrentUser';
 import UserPosts from '@components/user/UserPosts';
+import Avatar from '@components/user/Avatar';
 
 export default function User() {
   const { user, posts } = useLoaderData();
@@ -61,10 +62,6 @@ function FollowButton({ user }) {
       )}
     </fetcher.Form>
   );
-}
-
-function Avatar({ user }) {
-  return <img src={user.attributes.avatarUrl} alt="" className="avatar" />;
 }
 
 function NameWrapper({ user }) {
@@ -154,6 +151,59 @@ export async function userAction({ request }) {
         },
       },
     );
+  }
+
+  // Handle replace avatar
+  if (request.method === 'PATCH') {
+    // Refuse big files
+    const file = data.get('file');
+    if (file.size >= 10 ** 7) {
+      throw new Error('Image must be smaller than 10 MB');
+    }
+
+    const formData = new FormData();
+    formData.append('upload_preset', 'odinstragram-avatar');
+    formData.append('file', file);
+
+    const requestOptions = {
+      method: 'POST',
+      body: formData,
+      redirect: 'follow',
+    };
+
+    let publicId;
+
+    try {
+      res = await fetch(
+        'https://api.cloudinary.com/v1_1/dg2fuzzhq/image/upload/',
+        requestOptions,
+      );
+      const parsedRes = await res.json();
+
+      publicId = parsedRes.public_id;
+    } catch (error) {
+      // TODO: handle error
+    }
+
+    // TODO: try...catch
+    res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/users/avatar`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${getJwt()}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          type: 'avatars',
+          attributes: {
+            publicId,
+          },
+        },
+      }),
+    });
+
+    // console.log(await res.json());
+    // return redirect('');
   }
 
   if (!res.ok) {

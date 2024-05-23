@@ -1,12 +1,14 @@
+@import 'dialog.css';
+
 html {
   /* == Variables == */
 
   /* Colors */
-  /* --background-color: #003566;
-  --foreground-color: #1d619f;
-  --accent-color: #ffd60a;
-  --text-color: azure; */
-  --background-color: #99d6ea;
+  --tekhelet: hsla(246, 46%, 37%, 1);
+  --medium-slate-blue: hsla(239, 77%, 70%, 1);
+  --selective-yellow: hsla(45, 99%, 49%, 1);
+  --tangerine: hsla(34, 99%, 47%, 1);
+  --persimmon: hsla(22, 97%, 48%, 1);
 
   /* Others */
   --shadow: 2px 1px 0px 0px hsl(0, 0%, 0%, 0.6);

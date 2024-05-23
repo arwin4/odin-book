@@ -1,0 +1,45 @@
+.image-upload-box {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  height: 300px;
+  width: 300px;
+
+  outline: 5px dashed black;
+
+  .content-wrapper {
+    /* Prevent drag events from being fired on elements in the dropbox */
+    z-index: -1;
+
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+    /* Hide explicit input button and filename */
+    input {
+      height: 0px;
+      color: transparent;
+
+      &::file-selector-button {
+        display: none;
+      }
+    }
+
+    .filesize-warning {
+      font-weight: bolder;
+    }
+
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  }
+}
+
+.dragging {
+  transition: outline-offset 0.1s ease-in;
+  outline: 5px dashed black;
+  outline-offset: -10px;
+}
