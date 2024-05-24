@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import userPropType from '@propTypes/user';
 import getCurrentUser from '@utils/getCurrentUser';
-import Dialog from '@components/Dialog';
+import Dialog from '@components/dialog/Dialog';
 import ImageUploadBox from '@components/ImageUploadBox';
 import { useFetcher } from 'react-router-dom';
 import LabelButton from '@components/buttons/LabelButton';
