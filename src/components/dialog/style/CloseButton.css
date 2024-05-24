@@ -1,6 +1,7 @@
 .close-btn {
   display: flex;
   all: unset;
+  justify-self: right;
 
   height: 30px;
   width: 30px;
