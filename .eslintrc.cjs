@@ -10,7 +10,10 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
-  rules: { 'no-underscore-dangle': 'off' }, // Need underscore to reference mongo _id
+  rules: {
+    'no-underscore-dangle': 'off', // Need underscore to reference mongo _id
+    'react/require-default-props': ['error', { functions: 'defaultArguments' }],
+  },
   settings: {
     'import/resolver': {
       alias: {
