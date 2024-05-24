@@ -3,12 +3,13 @@ import userPropType from '@propTypes/user';
 import getCurrentUser from '@utils/getCurrentUser';
 import Dialog from '@components/Dialog';
 import ImageUploadBox from '@components/ImageUploadBox';
-import { useFetcher, useNavigation } from 'react-router-dom';
+import { useFetcher } from 'react-router-dom';
+import LabelButton from '@components/buttons/LabelButton';
 
 export default function Avatar({ user }) {
   const changeAvatarModal = useRef();
   const fetcher = useFetcher();
-  const uploading = useNavigation().state !== 'idle';
+  const busy = fetcher.state !== 'idle';
 
   function openChangeAvatarModal() {
     changeAvatarModal.current.showModal();
@@ -42,10 +43,11 @@ export default function Avatar({ user }) {
           encType="multipart/form-data"
         >
           <ImageUploadBox />
-          <input
+          <LabelButton
+            icon="ph:upload-simple"
+            text="Submit new avatar"
             type="submit"
-            value={uploading ? 'Uploading...' : 'Upload new avatar'}
-            name="submit"
+            busy={busy}
           />
         </fetcher.Form>
       </Dialog>
