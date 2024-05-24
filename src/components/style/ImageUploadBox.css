@@ -4,9 +4,8 @@
   justify-items: center;
   text-align: center;
   height: 300px;
-  width: 300px;
 
-  outline: 5px dashed black;
+  outline: 5px dashed var(--persimmon);
 
   .content-wrapper {
     /* Prevent drag events from being fired on elements in the dropbox */

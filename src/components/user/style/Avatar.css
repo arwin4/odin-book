@@ -1,0 +1,14 @@
+.change-avatar-form {
+  display: grid;
+
+  .image-upload-box {
+    justify-self: center;
+    width: 90%;
+    margin: 20px 0;
+  }
+
+  button[type='submit'] {
+    min-width: fit-content;
+    justify-self: center;
+  }
+}

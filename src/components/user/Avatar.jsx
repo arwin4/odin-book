@@ -6,6 +6,8 @@ import ImageUploadBox from '@components/ImageUploadBox';
 import { useFetcher } from 'react-router-dom';
 import LabelButton from '@components/buttons/LabelButton';
 
+import './style/Avatar.css';
+
 export default function Avatar({ user }) {
   const changeAvatarModal = useRef();
   const fetcher = useFetcher();
