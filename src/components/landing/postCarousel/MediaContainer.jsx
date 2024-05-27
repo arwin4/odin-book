@@ -3,7 +3,11 @@ import postPropType from '@propTypes/post';
 
 export default function MediaContainer({ post }) {
   const { imageUrl } = post.attributes;
-  return <img alt="" className="media-container" src={imageUrl} />;
+  return (
+    <div className="media-container">
+      <img alt="" className="media" src={imageUrl} />
+    </div>
+  );
 }
 
 /* Prop Types */

@@ -7,23 +7,71 @@
     position: absolute;
   }
 
-  max-width: 250px;
+  place-self: center;
+  width: 90dvw;
 
   gap: 10px;
 
   border-radius: 2px;
+
   padding: 10px 0;
 
   border: 2px solid black;
   box-shadow: var(--shadow);
 
-  background-color: gold;
   background-color: var(--selective-yellow);
 
-  .media-container {
-    /* Prevent layout shift */
-    height: 187.5px;
-    object-fit: contain;
+  .author-label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: gold;
+
+    --border: 1px solid black;
+    border-top: var(--border);
+    border-bottom: var(--border);
+
+    .avatar {
+      width: 40px;
+    }
+
+    .text-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .first-name {
+        margin-left: -8px;
+        font-weight: bolder;
+      }
+
+      .username {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .media-container .media {
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .meta {
+    display: grid;
+    gap: 10px;
+
+    .likes {
+      opacity: 0.8;
+
+      .count {
+        color: initial;
+        font-weight: bold;
+      }
+    }
+
+    .date .icon {
+      margin-right: 5px;
+    }
   }
 
   .nested-post {

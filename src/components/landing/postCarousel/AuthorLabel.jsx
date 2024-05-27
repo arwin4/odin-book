@@ -1,18 +1,20 @@
 import React from 'react';
-import { formatRelative } from 'date-fns';
 import postPropType from '@propTypes/post';
+import { InlineIcon } from '@iconify/react';
 
 export default function AuthorLabel({ post }) {
-  const { firstName } = post.relationships.author.data.attributes;
-  const { dateCreated } = post.attributes;
-  // TODO: prevent firstName overflow (limit chars at ~30?)
-
-  const formattedDate = formatRelative(dateCreated, new Date());
+  const { firstName, username, avatarUrl } =
+    post.relationships.author.data.attributes;
 
   return (
-    <>
-      {firstName} - {formattedDate}
-    </>
+    <div className="author-label">
+      <img src={avatarUrl} className="avatar" alt="" />
+      <div className="text-label">
+        <InlineIcon className="icon" icon="ph:user-circle" />
+        <span className="first-name">{firstName}</span>
+        <span className="username">@{username}</span>
+      </div>
+    </div>
   );
 }
 
