@@ -15,10 +15,23 @@ html {
   --general-spacing: 20px;
 
   font-family: 'Red Hat Display', sans-serif;
+
+  background-color: var(--medium-slate-blue);
+}
+
+* {
+  /* Reset */
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
 }
 
 main {
   width: 100%;
+  max-width: 1000px;
 
   display: flex;
   justify-content: center;
