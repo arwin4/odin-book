@@ -1,7 +1,46 @@
 .user-card {
-  background: lavender;
+  align-self: center;
 
-  .avatar {
-    width: 100px;
+  display: grid;
+  gap: 25px;
+  padding: 10px;
+  align-items: center;
+  justify-items: center;
+
+  width: min(80%, 500px);
+
+  margin-bottom: 25px;
+
+  background: lavender;
+  background-color: var(--selective-yellow);
+  border: 5px solid var(--persimmon);
+
+  text-align: center;
+
+  .avatar-wrapper {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+
+    .avatar {
+      width: 100px;
+      border-radius: 50%;
+      border: 5px solid var(--tangerine);
+    }
+  }
+
+  .info-wrapper {
+    display: grid;
+
+    .name-wrapper {
+      .first-name {
+        font-weight: bolder;
+        font-size: larger;
+      }
+    }
+  }
+
+  .follow-user > * {
+    max-width: 100px;
   }
 }
