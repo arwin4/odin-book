@@ -10,8 +10,6 @@
   place-self: center;
   width: 90dvw;
 
-  gap: 10px;
-
   border-radius: 2px;
 
   padding: 10px 0;
@@ -51,14 +49,41 @@
     }
   }
 
-  .media-container .media {
-    max-height: 100%;
-    max-width: 100%;
+  .date {
+    width: fit-content;
+    align-self: end;
+
+    font-size: smaller;
+
+    padding: 2px;
+    padding-top: 0;
+
+    margin-bottom: 10px;
+
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 10px;
+
+    background-color: goldenrod;
+
+    .icon {
+      margin-right: 5px;
+    }
+  }
+
+  .media-container {
+    .media {
+      max-height: 100%;
+      max-width: 100%;
+    }
   }
 
   .meta {
     display: grid;
-    gap: 10px;
+
+    .description {
+      padding: 10px;
+    }
 
     .likes {
       opacity: 0.8;
@@ -67,10 +92,6 @@
         color: initial;
         font-weight: bold;
       }
-    }
-
-    .date .icon {
-      margin-right: 5px;
     }
   }
 
