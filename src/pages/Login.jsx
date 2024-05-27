@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 
 export default function Login() {
   const { login, authed } = useAuth();
+  const { state } = useLocation();
+
   const [loginErrors, setLoginErrors] = useState(null);
   // const [loginBusy, setLoginBusy] = useState(false);
 
   if (authed) {
-    // return <Navigate to={state?.path || '/'} />;
+    return <Navigate to={state?.path || '/'} />;
     // FIXME: Implement after login button on Landing sends state
-
-    return <Navigate to="/" />;
   }
 
   async function handleLogin(e) {

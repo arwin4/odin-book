@@ -27,7 +27,7 @@ export default function RequireAuth({ children }) {
   return authed === true ? (
     children
   ) : (
-    <Navigate to="/welcome" replace state={{ path: location.pathname }} />
+    <Navigate to="/login" replace state={{ path: location.pathname }} />
   );
 }
 
