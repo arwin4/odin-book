@@ -1,16 +1,29 @@
 .user-posts {
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, auto)); */
-  /* grid-template-rows: repeat(auto-fit, 290px); */
+  max-width: inherit;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   gap: 20px;
 
-  > * {
+  a {
     justify-self: center;
-    width: 90vw;
 
-    box-shadow:
-      3px 3px 0px 0px black,
-      -3px -3px 0px 0px gold;
+    display: grid;
+    place-content: center;
+
+    .post-media {
+      width: 100%;
+
+      border: 5px solid var(--tangerine);
+
+      transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.04);
+      }
+    }
   }
 }

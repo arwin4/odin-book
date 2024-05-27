@@ -12,6 +12,7 @@
   margin-bottom: 25px;
 
   background: lavender;
+  background-color: var(--selective-yellow);
   border: 5px solid var(--persimmon);
 
   text-align: center;

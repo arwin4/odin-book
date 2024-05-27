@@ -18,6 +18,7 @@
   box-shadow: var(--shadow);
 
   background-color: gold;
+  background-color: var(--selective-yellow);
 
   .media-container {
     /* Prevent layout shift */

@@ -4,6 +4,7 @@ import postPropType from '@propTypes/post';
 
 import './style/UserPosts.css';
 import userPropType from '@propTypes/user';
+import { Link } from 'react-router-dom';
 
 export default function UserPosts({ posts, user }) {
   console.log(posts);
@@ -18,11 +19,13 @@ export default function UserPosts({ posts, user }) {
   return (
     <div className="user-posts">
       {posts.map((post) => (
-        <img
-          src={post.attributes.imageUrl}
-          alt={post.attributes.description}
-          key={post.id}
-        />
+        <Link to={`/post/${post.id}`} key={post.id}>
+          <img
+            className="post-media"
+            src={post.attributes.imageUrl}
+            alt={post.attributes.description}
+          />
+        </Link>
       ))}
     </div>
   );
