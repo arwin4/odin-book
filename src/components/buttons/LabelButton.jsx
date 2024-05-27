@@ -8,17 +8,27 @@ import './style/LabelButton.css';
 
 export default function LabelButton({
   onClick = () => null,
-  icon = '',
   inline = '', // block style by default
   text,
   type = 'button',
+  icon = null,
+  name = null,
+  value = null,
+  formMethod = null,
   busy = false,
 }) {
   const btnClass = classNames('label-btn', { inline, busy });
   const spinnerIcon = 'svg-spinners:ring-resize';
 
   return (
-    <button type={type} className={btnClass} onClick={onClick}>
+    <button
+      type={type}
+      className={btnClass}
+      onClick={onClick}
+      name={name}
+      value={value}
+      formMethod={formMethod}
+    >
       <InlineIcon
         className="icon"
         icon={busy ? spinnerIcon : icon}
@@ -33,6 +43,9 @@ export default function LabelButton({
 LabelButton.propTypes = {
   onClick: PropTypes.func,
   icon: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  formMethod: PropTypes.string,
   inline: PropTypes.string,
   text: PropTypes.string.isRequired,
   type: PropTypes.string,

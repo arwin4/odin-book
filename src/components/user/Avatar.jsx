@@ -13,30 +13,21 @@ export default function Avatar({ user }) {
   const fetcher = useFetcher();
   const busy = fetcher.state !== 'idle';
 
-  function openChangeAvatarModal() {
-    changeAvatarModal.current.showModal();
-  }
-
   if (fetcher.state === 'loading') {
     changeAvatarModal.current.close();
   }
-
-  const editAvatarBtn = (
-    <button
-      type="button"
-      className="avatar-modal-btn"
-      onClick={openChangeAvatarModal}
-    >
-      Change avatar
-    </button>
-  );
 
   const isCurrentUser = user.id === getCurrentUser().id;
 
   return (
     <div className="avatar-wrapper">
       <img src={user.attributes.avatarUrl} alt="" className="avatar" />
-      {isCurrentUser && editAvatarBtn}
+      {isCurrentUser && (
+        <LabelButton
+          onClick={() => changeAvatarModal.current.showModal()}
+          text="Change avatar"
+        />
+      )}
 
       <Dialog title="Upload new avatar" ref={changeAvatarModal}>
         <fetcher.Form

@@ -1,19 +1,20 @@
 import getJwt from '@utils/getJwt';
 import React from 'react';
 import { useFetcher, useLoaderData } from 'react-router-dom';
-import './style/UserCard.css';
 
 import userPropType from '@propTypes/user';
 import getCurrentUser from '@utils/getCurrentUser';
 import UserPosts from '@components/user/UserPosts';
 import Avatar from '@components/user/Avatar';
 
+import './style/UserCard.css';
+import LabelButton from '@components/buttons/LabelButton';
+
 export default function User() {
   const { user, posts } = useLoaderData();
 
   return (
     <>
-      <h1>Home</h1>
       <UserCard user={user} />
       <UserPosts posts={posts} user={user} />
     </>
@@ -21,13 +22,17 @@ export default function User() {
 }
 
 function UserCard({ user }) {
+  const isCurrentUser = user.id === getCurrentUser().id;
+
   return (
     <div className="user-card">
       <Avatar user={user} />
-      <NameWrapper user={user} />
-      <FollowerCount user={user} />
-      <Bio user={user} />
-      <FollowButton user={user} />
+      <div className="info-wrapper">
+        <NameWrapper user={user} />
+        <FollowerCount user={user} />
+        <Bio user={user} />
+      </div>
+      {!isCurrentUser && <FollowButton user={user} />}
     </div>
   );
 }
@@ -42,23 +47,21 @@ function FollowButton({ user }) {
   return (
     <fetcher.Form className="follow-user">
       {isFollowing ? (
-        <button
-          type="submit"
+        <LabelButton
+          text="Unfollow"
           name="username"
           value={user.attributes.normalizedUsername}
           formMethod="DELETE"
-        >
-          Unfollow
-        </button>
-      ) : (
-        <button
           type="submit"
+        />
+      ) : (
+        <LabelButton
+          text="Follow"
           name="username"
           value={user.attributes.normalizedUsername}
           formMethod="POST"
-        >
-          Follow
-        </button>
+          type="submit"
+        />
       )}
     </fetcher.Form>
   );
