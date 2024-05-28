@@ -86,7 +86,15 @@
     }
 
     .likes-wrapper {
-      display: flex;
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(3, 1fr);
+
+      :first-child {
+        justify-self: center;
+
+        border-radius: 50px;
+      }
 
       .likes {
         opacity: 0.8;
