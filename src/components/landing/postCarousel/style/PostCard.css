@@ -29,6 +29,9 @@
     border-top: var(--border);
     border-bottom: var(--border);
 
+    text-decoration: none;
+    color: inherit;
+
     .avatar {
       width: 40px;
     }
