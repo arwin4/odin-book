@@ -5,7 +5,7 @@ import Login from '@pages/Login';
 import Home, { homeLoader } from '@pages/Home';
 import User, { userAction, userLoader } from '@pages/User';
 import NewPostForm, { newPostAction } from '@pages/NewPost';
-import Post, { postLoader } from '@pages/Post';
+import Post, { postAction, postLoader } from '@pages/Post';
 import Error from '@pages/Error';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
@@ -32,7 +32,7 @@ export default function Router() {
           path: 'post/:id',
           element: <Post />,
           loader: postLoader,
-          // action: postAction,
+          action: postAction,
         },
         {
           path: 'new-post',

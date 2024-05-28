@@ -9,7 +9,7 @@ import './style/LabelButton.css';
 export default function LabelButton({
   onClick = () => null,
   inline = '', // block style by default
-  text,
+  text = null,
   type = 'button',
   icon = null,
   name = null,
@@ -47,7 +47,7 @@ LabelButton.propTypes = {
   value: PropTypes.string,
   formMethod: PropTypes.string,
   inline: PropTypes.string,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   type: PropTypes.string,
   busy: PropTypes.bool,
 };

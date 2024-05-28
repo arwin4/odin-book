@@ -85,12 +85,16 @@
       padding: 10px;
     }
 
-    .likes {
-      opacity: 0.8;
+    .likes-wrapper {
+      display: flex;
 
-      .count {
-        color: initial;
-        font-weight: bold;
+      .likes {
+        opacity: 0.8;
+
+        .count {
+          color: initial;
+          font-weight: bold;
+        }
       }
     }
   }
