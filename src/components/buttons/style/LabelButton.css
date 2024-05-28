@@ -23,6 +23,7 @@
   border-top-color: var(--tangerine);
   border-right-color: var(--persimmon);
   border-bottom-color: var(--persimmon);
+  border-radius: 10px 5px;
 
   .icon {
     height: 30px;
@@ -32,9 +33,9 @@
   &:focus-visible {
     cursor: pointer;
 
-    transition: all 0.3s ease;
     border-color: var(--persimmon);
     border-radius: 10px 5px;
+    outline: 3px solid black;
   }
 
   &.inline {
