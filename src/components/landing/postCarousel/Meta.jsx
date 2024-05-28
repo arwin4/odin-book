@@ -6,7 +6,6 @@ import getCurrentUser from '@utils/getCurrentUser';
 
 export default function Meta({ post }) {
   const fetcher = useFetcher();
-  console.log(fetcher.state);
   const currentUser = getCurrentUser();
 
   const { description } = post.attributes;
@@ -23,6 +22,7 @@ export default function Meta({ post }) {
       <div className="likes-wrapper">
         <fetcher.Form className="like-form">
           <LabelButton
+            busy={fetcher.state !== 'idle'}
             icon={currentUserLikedThisPost ? 'ph:heart-fill' : 'ph:heart'}
             inline="true"
             formMethod={currentUserLikedThisPost ? 'DELETE' : 'POST'}
