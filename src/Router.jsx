@@ -19,6 +19,7 @@ export default function Router() {
         {
           index: true,
           element: <Home />,
+          errorElement: <Error />,
           loader: homeLoader,
         },
         {
@@ -49,6 +50,7 @@ export default function Router() {
     {
       path: '/login',
       element: <Login />,
+      // TODO: Merge login and landing
     },
   ]);
 

@@ -13,9 +13,6 @@ export default function Error() {
     // case 400:
     //   return <div className="error">{/* {error.data} {backToChatsBtn} */}</div>;
 
-    // case 401:
-    //   // Unauthorized
-    //   return <Navigate to="/login" />;
     case 404:
       return (
         <div className="error">
@@ -23,6 +20,9 @@ export default function Error() {
           {/* {backToChatsBtn} */}
         </div>
       );
+    case 401:
+      // Unauthorized
+      return <Navigate to="/login" />;
     default:
       return (
         <div className="error">
