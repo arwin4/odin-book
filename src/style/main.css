@@ -14,14 +14,14 @@ html {
   --shadow: 2px 1px 0px 0px hsl(0, 0%, 0%, 0.6);
   --general-spacing: 20px;
 
-  font-family: 'Red Hat Display', sans-serif;
-
   background-color: var(--medium-slate-blue);
 }
 
 * {
   /* Reset */
   box-sizing: border-box;
+
+  font-family: 'Red Hat Display', sans-serif;
 }
 
 #root {
