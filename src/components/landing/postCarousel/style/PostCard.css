@@ -86,12 +86,15 @@
 
     .description {
       padding: 10px;
+      margin-top: 10px;
     }
 
     .interaction-wrapper {
       display: grid;
       align-items: center;
       grid-template-columns: repeat(3, 1fr);
+
+      margin-bottom: 10px;
 
       :first-child {
         justify-self: center;
@@ -109,8 +112,6 @@
       }
 
       :last-child {
-        justify-self: end;
-
         border-radius: 50px;
       }
     }
@@ -118,10 +119,9 @@
 
   .comment-form {
     &::before {
-      margin: 10px 0;
+      margin: 10px -10px;
       content: '';
-      outline: 1px solid black;
-      outline-style: dashed;
+      border: 2px dashed black;
     }
 
     display: grid;
@@ -132,6 +132,9 @@
       padding-left: 5px;
       border-style: none;
       border-radius: 2px;
+      width: 90%;
+      max-width: 500px;
+      justify-self: center;
     }
 
     [type='submit'] {
