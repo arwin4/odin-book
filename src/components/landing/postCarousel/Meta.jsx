@@ -19,16 +19,16 @@ export default function Meta({ post }) {
   return (
     <div className="meta">
       <cite className="description">{description}</cite>
-      <div className="likes-wrapper">
-        <fetcher.Form className="like-form">
+      <div className="interaction-wrapper">
+        <fetcher.Form className="like-form" method="POST">
+          <input type="hidden" name="post-id" value={post.id} />
           <LabelButton
             busy={fetcher.state !== 'idle'}
             icon={currentUserLikedThisPost ? 'ph:heart-fill' : 'ph:heart'}
             inline="true"
-            formMethod={currentUserLikedThisPost ? 'DELETE' : 'POST'}
             type="submit"
-            name="post-id"
-            value={post.id}
+            name="intent"
+            value={currentUserLikedThisPost ? 'remove-like' : 'add-like'}
           />
         </fetcher.Form>
         <div className="likes">
