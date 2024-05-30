@@ -13,8 +13,9 @@ dialog {
 
   width: min(90vw, 450px);
 
-  border-radius: 5px;
-  border-width: 0;
+  border: var(--default-border);
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--default-box-shadow);
 
   /* Dialog sticks to the bottom of the screen */
   padding-block-end: 25px;
@@ -24,16 +25,15 @@ dialog {
   border-block-end-width: 0;
 
   background-color: whitesmoke;
-  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.5);
 
   @media (min-width: 768px) {
-    /* Place dialog in center if the screen is not mobile */
+    /* Place dialog in cenr if the screen is not mobile */
     margin-block-end: auto;
-    border-radius: 5px;
+    border-block-end-width: 2px;
   }
 
   &::backdrop {
-    backdrop-filter: blur(2px);
+    backdrop-filter: contrast(30%);
   }
 
   &:not([open]) {
@@ -59,11 +59,6 @@ dialog {
       text-align: center;
       line-height: 1.5rem;
     }
-
-    .close-btn {
-      display: flex;
-      place-content: end;
-    }
   }
 
   .section-title {
@@ -83,35 +78,13 @@ dialog {
 
   /* Confirmation dialog */
   .confirmation {
-    padding-block-end: unset;
+    padding-block-start: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 
-    > form {
-      display: grid;
-      gap: 20px;
-
-      padding: 25px;
-
-      text-align: center;
-
-      .explanation.emphasis,
-      .explanation .emphasis {
-        font-weight: bolder;
-      }
-
-      footer > menu {
-        display: flex;
-
-        justify-content: space-evenly;
-        gap: min(10px);
-
-        .confirm-btn {
-          font-weight: bolder;
-        }
-
-        .cancel-btn {
-          font-weight: lighter;
-        }
-      }
+    .cancel-btn * {
+      font-weight: lighter;
     }
   }
 }

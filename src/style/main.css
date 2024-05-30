@@ -16,6 +16,11 @@ html {
   --shadow: 2px 1px 0px 0px hsl(0, 0%, 0%, 0.6);
   --general-spacing: 20px;
 
+  /* Box borders */
+  --default-border: 2px solid black;
+  --default-border-radius: 2px;
+  --default-box-shadow: var(--shadow);
+
   background-color: var(--medium-slate-blue);
 }
 

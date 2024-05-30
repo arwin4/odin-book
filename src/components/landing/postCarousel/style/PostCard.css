@@ -10,12 +10,11 @@
   place-self: center;
   width: 90dvw;
 
-  border-radius: 2px;
-
   padding: 10px 0;
 
-  border: 2px solid black;
-  box-shadow: var(--shadow);
+  border: var(--default-border);
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--default-box-shadow);
 
   background-color: var(--selective-yellow);
 
