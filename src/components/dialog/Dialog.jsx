@@ -5,10 +5,10 @@ import CloseButton from './CloseButton';
 
 // TODO: add soft dismiss
 
-const Dialog = forwardRef(({ children, title }, ref) => (
+const Dialog = forwardRef(({ children, title, icon }, ref) => (
   <dialog className="change-avatar-modal" ref={ref}>
     <header>
-      <InlineIcon className="icon" icon="ph:user-rectangle" height="unset" />
+      <InlineIcon className="icon" icon={icon} height="unset" />
       <h1>{title}</h1>
       <form className="close-btn" method="dialog">
         <CloseButton icon="ph:x-circle" type="submit" />
@@ -23,4 +23,5 @@ export default Dialog;
 Dialog.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
 };

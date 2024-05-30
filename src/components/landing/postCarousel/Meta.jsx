@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import postPropType from '@propTypes/post';
 import commentsPropType from '@propTypes/comments';
@@ -6,13 +6,21 @@ import commentsPropType from '@propTypes/comments';
 import LabelButton from '@components/buttons/LabelButton';
 import { useFetcher } from 'react-router-dom';
 import getCurrentUser from '@utils/getCurrentUser';
+import Dialog from '@components/dialog/Dialog';
 
 export default function Meta({ post, comments, toggleCommentsVisibility }) {
+  const confirmPostDeletionModal = useRef();
+
   const fetcher = useFetcher();
   const currentUser = getCurrentUser();
 
   const { description } = post.attributes;
   const likes = post.relationships.likes.data;
+
+  // Booleans
+  const currentUserIsAuthor =
+    currentUser.id === post.relationships.author.data.id;
+
   const currentUserLikedThisPost = likes.some(
     (like) => like.id === currentUser.id,
   );
@@ -33,6 +41,13 @@ export default function Meta({ post, comments, toggleCommentsVisibility }) {
             value={currentUserLikedThisPost ? 'remove-like' : 'add-like'}
           />
         </fetcher.Form>
+        {currentUserIsAuthor && (
+          <LabelButton
+            icon="ph:trash"
+            inline="true"
+            onClick={() => confirmPostDeletionModal.current.showModal()}
+          />
+        )}
         <LabelButton
           icon="ph:chat-centered-text"
           inline="true"
@@ -40,6 +55,32 @@ export default function Meta({ post, comments, toggleCommentsVisibility }) {
           text={comments.length.toString()}
         />
       </div>
+
+      <Dialog
+        title="Delete post?"
+        icon="ph:trash"
+        ref={confirmPostDeletionModal}
+      >
+        <fetcher.Form className="delete-post-confirmation-form" method="post">
+          <input type="hidden" name="post-id" value={post.id} />
+          <input
+            type="hidden"
+            name="username"
+            value={currentUser.attributes.username}
+          />
+          <LabelButton
+            icon="ph:trash"
+            text="Delete post"
+            type="submit"
+            name="intent"
+            value="delete-post"
+            busy={fetcher.state !== 'idle'}
+          />
+        </fetcher.Form>
+        <form className="close-btn" method="dialog">
+          <LabelButton text="Cancel" type="submit" method="dialog" />
+        </form>
+      </Dialog>
     </div>
   );
 }

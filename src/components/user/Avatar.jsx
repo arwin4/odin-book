@@ -29,7 +29,11 @@ export default function Avatar({ user }) {
         />
       )}
 
-      <Dialog title="Upload new avatar" ref={changeAvatarModal}>
+      <Dialog
+        title="Upload new avatar"
+        icon="ph:user-rectangle"
+        ref={changeAvatarModal}
+      >
         <fetcher.Form
           className="change-avatar-form"
           method="patch"

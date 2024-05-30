@@ -1,7 +1,7 @@
 import PostCard from '@components/posts/PostCard';
 import getJwt from '@utils/getJwt';
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { redirect, useLoaderData } from 'react-router-dom';
 
 export default function Post() {
   const { post, comments } = useLoaderData();
@@ -97,6 +97,23 @@ export async function postAction({ request }) {
         }),
       },
     );
+  }
+
+  // Handle delete post
+  if (intent === 'delete-post') {
+    const username = data.get('username');
+    res = await fetch(
+      `${import.meta.env.VITE_API_SERVER_URL}/posts/${postId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${getJwt()}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+
+    return redirect(`/user/${username}`);
   }
 
   if (!res.ok) {

@@ -107,10 +107,9 @@
 
     .interaction-wrapper {
       display: grid;
-      align-items: center;
       grid-template-columns: repeat(3, 1fr);
-
-      margin-bottom: 10px;
+      justify-items: center;
+      margin: 10px;
 
       button {
         width: 60px;
@@ -122,6 +121,7 @@
       }
 
       :last-child {
+        justify-self: start;
         grid-column-start: 3;
       }
     }
