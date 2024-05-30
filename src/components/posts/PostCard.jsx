@@ -6,17 +6,29 @@ import MediaContainer from '@components/landing/postCarousel/MediaContainer';
 import Meta from '@components/landing/postCarousel/Meta';
 import commentsPropType from '@propTypes/comments';
 import postPropType from '@propTypes/post';
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function PostCard({ post, comments }) {
+  const [commentsVisible, setCommentsVisible] = useState(false);
+
+  const toggleCommentsVisibility = () => setCommentsVisible(!commentsVisible);
+
   return (
     <div className="post-card">
       <AuthorLabel post={post} />
       <DateLabel post={post} />
       <MediaContainer post={post} />
-      <Meta post={post} />
-      <CommentForm post={post} />
-      <Comments comments={comments} />
+      <Meta
+        post={post}
+        comments={comments}
+        toggleCommentsVisibility={toggleCommentsVisibility}
+      />
+      {commentsVisible && (
+        <>
+          <CommentForm post={post} />
+          <Comments comments={comments} />
+        </>
+      )}
     </div>
   );
 }

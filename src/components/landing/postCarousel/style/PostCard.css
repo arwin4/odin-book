@@ -112,23 +112,17 @@
 
       margin-bottom: 10px;
 
-      :first-child {
-        justify-self: center;
-
+      button {
+        width: 60px;
         border-radius: 50px;
       }
 
-      .likes {
-        opacity: 0.8;
-
-        .count {
-          color: initial;
-          font-weight: bold;
-        }
+      :first-child {
+        justify-self: end;
       }
 
       :last-child {
-        border-radius: 50px;
+        grid-column-start: 3;
       }
     }
   }
