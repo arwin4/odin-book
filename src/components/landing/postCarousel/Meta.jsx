@@ -61,25 +61,27 @@ export default function Meta({ post, comments, toggleCommentsVisibility }) {
         icon="ph:trash"
         ref={confirmPostDeletionModal}
       >
-        <fetcher.Form className="delete-post-confirmation-form" method="post">
-          <input type="hidden" name="post-id" value={post.id} />
-          <input
-            type="hidden"
-            name="username"
-            value={currentUser.attributes.username}
-          />
-          <LabelButton
-            icon="ph:trash"
-            text="Delete post"
-            type="submit"
-            name="intent"
-            value="delete-post"
-            busy={fetcher.state !== 'idle'}
-          />
-        </fetcher.Form>
-        <form className="close-btn" method="dialog">
-          <LabelButton text="Cancel" type="submit" method="dialog" />
-        </form>
+        <div className="confirmation">
+          <fetcher.Form className="delete-post-confirmation-form" method="post">
+            <input type="hidden" name="post-id" value={post.id} />
+            <input
+              type="hidden"
+              name="username"
+              value={currentUser.attributes.username}
+            />
+            <LabelButton
+              icon="ph:trash"
+              text="Confirm"
+              type="submit"
+              name="intent"
+              value="delete-post"
+              busy={fetcher.state !== 'idle'}
+            />
+          </fetcher.Form>
+          <form className="cancel-btn" method="dialog">
+            <LabelButton text="Cancel" type="submit" method="dialog" />
+          </form>
+        </div>
       </Dialog>
     </div>
   );

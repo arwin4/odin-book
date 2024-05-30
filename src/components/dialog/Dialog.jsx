@@ -6,7 +6,7 @@ import CloseButton from './CloseButton';
 // TODO: add soft dismiss
 
 const Dialog = forwardRef(({ children, title, icon }, ref) => (
-  <dialog className="change-avatar-modal" ref={ref}>
+  <dialog ref={ref}>
     <header>
       <InlineIcon className="icon" icon={icon} height="unset" />
       <h1>{title}</h1>
