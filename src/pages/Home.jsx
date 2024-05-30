@@ -5,13 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 
 export default function Home() {
   const posts = useLoaderData();
-
-  return (
-    <>
-      <h1>Home</h1>
-      <Posts posts={posts} />
-    </>
-  );
+  return <Posts posts={posts} />;
 }
 
 export async function homeLoader() {

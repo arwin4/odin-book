@@ -1,14 +1,14 @@
-import PostCard from '@components/posts/PostCard';
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style/Posts.css';
 import postPropType from '@propTypes/post';
+import SmallPostCard from '@components/posts/SmallPostCard';
 
 export default function Posts({ posts }) {
   return (
     <div className="posts">
       {posts.map((post) => (
-        <PostCard post={post} key={post.id} />
+        <SmallPostCard post={post} key={post.id} />
       ))}
     </div>
   );
