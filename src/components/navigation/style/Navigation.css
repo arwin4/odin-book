@@ -1,0 +1,37 @@
+.nav-bar {
+  display: flex;
+  align-self: center;
+
+  width: 90%;
+  max-width: 500px;
+  margin-bottom: 15px;
+
+  background-color: lavender;
+
+  border: var(--default-border);
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--default-box-shadow);
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 1 1 auto;
+    padding: 4px 0;
+
+    text-decoration: none;
+    color: initial;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    /* Activates if user is on current route */
+    &.active {
+      .description {
+        font-weight: bolder;
+      }
+    }
+  }
+}
