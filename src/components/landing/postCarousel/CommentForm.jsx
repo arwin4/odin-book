@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import postPropType from '@propTypes/post';
 import { useFetcher } from 'react-router-dom';
 import LabelButton from '@components/buttons/LabelButton';
@@ -6,6 +6,8 @@ import LabelButton from '@components/buttons/LabelButton';
 export default function CommentForm({ post }) {
   const fetcher = useFetcher();
   const commentFieldRef = useRef();
+
+  const [commentFieldFocused, setCommentFieldFocused] = useState(false);
 
   // Emtpy field on submit
   useEffect(() => {
@@ -22,15 +24,19 @@ export default function CommentForm({ post }) {
         placeholder="Leave a comment..."
         ref={commentFieldRef}
         autoComplete="off"
+        onFocus={() => setCommentFieldFocused(true)}
+        onBlur={() => setCommentFieldFocused(false)}
         required
       />
-      <LabelButton
-        busy={fetcher.state !== 'idle'}
-        icon="ph:paper-plane-right"
-        inline="true"
-        type="submit"
-        text="Post"
-      />
+      {(commentFieldFocused || commentFieldRef.current?.value !== '') && (
+        <LabelButton
+          busy={fetcher.state !== 'idle'}
+          icon="ph:paper-plane-right"
+          inline="true"
+          type="submit"
+          text="Post"
+        />
+      )}
     </fetcher.Form>
   );
 }
