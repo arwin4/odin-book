@@ -23,22 +23,20 @@ export async function postLoader({ params }) {
     }),
   ]);
 
+  if (!postRes.ok) {
+    const { errors } = await postRes.json();
+    throw new Response(errors[0].title, { status: postRes.status });
+  }
+
+  if (!commentsRes.ok) {
+    const { errors } = await commentsRes.json();
+    throw new Response(errors[0].title, { status: commentsRes.status });
+  }
+
   const [fetchedPost, fetchedComments] = await Promise.all([
     postRes.json(),
     commentsRes.json(),
   ]);
-
-  if (!postRes.ok) {
-    throw new Response(fetchedPost.errors[0].title, {
-      status: fetchedPost.status,
-    });
-  }
-
-  if (!commentsRes.ok) {
-    throw new Response(fetchedComments.errors[0].title, {
-      status: fetchedComments.status,
-    });
-  }
 
   return { post: fetchedPost.data, comments: fetchedComments.data };
 }
