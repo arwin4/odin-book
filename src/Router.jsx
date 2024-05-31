@@ -15,6 +15,7 @@ export default function Router() {
       path: '/',
       // Layout function wraps any of its children inside <RequireAuth>
       element: <RequireAuthLayout />,
+      errorElement: <Error />,
       children: [
         {
           index: true,
@@ -34,11 +35,13 @@ export default function Router() {
           element: <Post />,
           loader: postLoader,
           action: postAction,
+          errorElement: <Error />,
         },
         {
           path: 'new-post',
           element: <NewPostForm />,
           action: newPostAction,
+          errorElement: <Error />,
         },
       ],
     },
@@ -46,6 +49,7 @@ export default function Router() {
       path: 'welcome',
       element: <Landing />,
       loader: landingLoader,
+      errorElement: <Error />,
     },
     {
       path: '/login',
