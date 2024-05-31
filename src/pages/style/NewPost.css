@@ -1,2 +1,40 @@
-.new-post-form {
+.new-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .new-post-form {
+    display: grid;
+    justify-items: center;
+
+    border: var(--default-border);
+    border-radius: var(--default-border-radius);
+    box-shadow: var(--default-box-shadow);
+
+    background-color: lavender;
+
+    .description-field {
+      padding-left: 5px;
+      border: 1px solid black;
+      border-radius: 2px;
+      margin: 15px 0;
+      margin-bottom: 25px;
+      width: 80%;
+      max-width: 500px;
+      justify-self: center;
+
+      font-size: 15px;
+    }
+
+    .public-notice {
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    [type='submit'] {
+      margin-bottom: 15px;
+    }
+  }
 }

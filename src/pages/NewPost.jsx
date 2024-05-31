@@ -4,6 +4,7 @@ import { Form, redirect, useNavigation } from 'react-router-dom';
 
 import './style/NewPost.css';
 import ImageUploadBox from '@components/ImageUploadBox';
+import LabelButton from '@components/buttons/LabelButton';
 
 /**
  * TODO:
@@ -17,20 +18,32 @@ export default function NewPostForm() {
   const uploading = navigation.state !== 'idle';
 
   return (
-    <Form className="new-post-form" method="post" encType="multipart/form-data">
-      <ImageUploadBox />
-      <input
-        type="text"
-        placeholder="Add a description..."
-        name="description"
-        required
-      />
-      <input
-        type="submit"
-        value={uploading ? 'Uploading...' : 'Upload image'}
-        name="submit"
-      />
-    </Form>
+    <div className="new-post">
+      <Form
+        className="new-post-form"
+        method="post"
+        encType="multipart/form-data"
+      >
+        <ImageUploadBox />
+        <input
+          className="description-field"
+          type="text"
+          placeholder="Add a description..."
+          name="description"
+          maxLength={500}
+          required
+        />
+        <div className="public-notice">
+          Your post will be visible to all other users on the Explore page.
+        </div>
+        <LabelButton
+          busy={uploading}
+          type="submit"
+          name="submit"
+          text={uploading ? 'Posting...' : 'Post'}
+        />
+      </Form>
+    </div>
   );
 }
 

@@ -3,18 +3,32 @@
   align-content: center;
   justify-items: center;
   text-align: center;
+
   height: 300px;
 
   outline: 5px dashed var(--persimmon);
 
+  margin: 25px;
+  z-index: 0;
+
+  background-color: var(--selective-yellow);
+
   .content-wrapper {
     /* Prevent drag events from being fired on elements in the dropbox */
     z-index: -1;
+    pointer-events: none;
 
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
+
+    overflow: hidden;
+    width: 80%;
+
+    .icon {
+      height: 50px;
+    }
 
     /* Hide explicit input button and filename */
     input {
@@ -39,6 +53,5 @@
 
 .dragging {
   transition: outline-offset 0.1s ease-in;
-  outline: 5px dashed black;
   outline-offset: -10px;
 }

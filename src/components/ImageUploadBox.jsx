@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import './style/ImageUploadBox.css';
+import { InlineIcon } from '@iconify/react';
 
 export default function ImageUploadBox() {
   const [file, setFile] = useState(null);
@@ -59,7 +60,12 @@ export default function ImageUploadBox() {
       <div className="content-wrapper">
         {!isFileValid(file) && (
           <div className="instruction">
-            Drop an image here or click to upload
+            <InlineIcon
+              className="icon"
+              icon="ph:upload-simple"
+              height="unset"
+            />
+            <div className="text">Drop an image here or click to upload</div>
           </div>
         )}
 
