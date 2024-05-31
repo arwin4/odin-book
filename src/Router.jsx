@@ -20,7 +20,6 @@ export default function Router() {
         {
           index: true,
           element: <Home />,
-          errorElement: <Error />,
           loader: homeLoader,
         },
         {
@@ -28,20 +27,17 @@ export default function Router() {
           element: <User />,
           loader: userLoader,
           action: userAction,
-          errorElement: <Error />,
         },
         {
           path: 'post/:id',
           element: <Post />,
           loader: postLoader,
           action: postAction,
-          errorElement: <Error />,
         },
         {
           path: 'new-post',
           element: <NewPostForm />,
           action: newPostAction,
-          errorElement: <Error />,
         },
       ],
     },
