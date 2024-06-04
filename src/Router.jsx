@@ -7,6 +7,7 @@ import User, { userAction, userLoader } from '@pages/User';
 import NewPostForm, { newPostAction } from '@pages/NewPost';
 import Post, { postAction, postLoader } from '@pages/Post';
 import Error from '@pages/Error';
+import Explore, { exploreLoader } from '@pages/Explore';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -21,6 +22,11 @@ export default function Router() {
           index: true,
           element: <Home />,
           loader: homeLoader,
+        },
+        {
+          path: 'explore',
+          element: <Explore />,
+          loader: exploreLoader,
         },
         {
           path: 'user/:username',
