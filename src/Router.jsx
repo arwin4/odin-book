@@ -1,13 +1,26 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Landing, { landingLoader } from '@pages/Landing';
+
+// Pages
+import Landing from '@pages/Landing';
 import Login from '@pages/Login';
-import Home, { homeLoader } from '@pages/Home';
-import User, { userAction, userLoader } from '@pages/User';
-import NewPostForm, { newPostAction } from '@pages/NewPost';
-import Post, { postAction, postLoader } from '@pages/Post';
+import Home from '@pages/Home';
+import User from '@pages/User';
+import NewPostForm from '@pages/NewPost';
+import Post from '@pages/Post';
 import Error from '@pages/Error';
-import Explore, { exploreLoader } from '@pages/Explore';
+
+// Loaders
+import homeLoader from '@pages/loaders/homeLoader';
+import exploreLoader from '@pages/loaders/exploreLoader';
+import userLoader from '@pages/loaders/userLoader';
+import userAction from '@pages/actions/userAction';
+import postLoader from '@pages/loaders/postLoader';
+import postAction from '@pages/actions/postAction';
+
+// Actions
+import newPostAction from '@pages/actions/newPostAction';
+import landingLoader from '@pages/loaders/landingLoader';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -25,7 +38,7 @@ export default function Router() {
         },
         {
           path: 'explore',
-          element: <Explore />,
+          element: <Home />,
           loader: exploreLoader,
         },
         {
