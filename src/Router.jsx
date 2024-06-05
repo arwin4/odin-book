@@ -21,6 +21,7 @@ import postAction from '@pages/actions/postAction';
 // Actions
 import newPostAction from '@pages/actions/newPostAction';
 import landingLoader from '@pages/loaders/landingLoader';
+import Explore from '@pages/Explore';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -33,12 +34,12 @@ export default function Router() {
       children: [
         {
           index: true,
-          element: <Home />,
+          element: <Explore />,
           loader: homeLoader,
         },
         {
           path: 'explore',
-          element: <Home />,
+          element: <Explore />,
           loader: exploreLoader,
         },
         {

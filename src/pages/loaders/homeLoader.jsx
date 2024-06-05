@@ -1,8 +1,12 @@
 import getJwt from '@utils/getJwt';
 
 export default async function homeLoader() {
+  const params = new URLSearchParams(document.location.search);
+  const limit = params.get('limit');
+  const filter = limit ? `&limit=${limit}` : '';
+
   const res = await fetch(
-    `${import.meta.env.VITE_API_SERVER_URL}/posts?filter[followed]=true`,
+    `${import.meta.env.VITE_API_SERVER_URL}/posts?filter[followed]=true${filter}`,
     {
       method: 'GET',
       headers: { Authorization: `Bearer ${getJwt()}` },

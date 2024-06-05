@@ -4,6 +4,7 @@ import { useLoaderData, useRevalidator } from 'react-router-dom';
 
 export default function Explore() {
   const posts = useLoaderData();
+  console.log(posts);
   const revalidator = useRevalidator();
 
   function fetchMore() {
