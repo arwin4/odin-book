@@ -1,4 +1,5 @@
 @import 'dialog.css';
+@import 'timeline.css';
 
 html {
   /* == Variables == */
@@ -45,4 +46,5 @@ main {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
