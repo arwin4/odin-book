@@ -3,6 +3,8 @@ import Posts from '@components/home/Posts';
 import { Link, useLoaderData, useRevalidator } from 'react-router-dom';
 import { InlineIcon } from '@iconify/react';
 
+import './style/Timeline.css';
+
 export default function Timeline() {
   const posts = useLoaderData();
   const revalidator = useRevalidator();
@@ -41,7 +43,7 @@ export default function Timeline() {
 
   if (posts.length === 0) {
     return (
-      <div className="home">
+      <div className="timeline">
         <div className="no-posts-tip">
           <h2>No posts yet!</h2>
           <h3>
