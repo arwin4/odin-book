@@ -1,6 +1,9 @@
 .nav-bar {
+  /* Scroll behavior */
+  position: absolute;
+  z-index: 10;
+
   display: flex;
-  align-self: center;
 
   width: 90%;
   max-width: 500px;
@@ -33,5 +36,16 @@
         font-weight: bolder;
       }
     }
+  }
+}
+
+.show-on-scroll-up {
+  position: fixed;
+  animation: slide-into-view 0.3s linear forwards;
+}
+
+@keyframes slide-into-view {
+  from {
+    transform: translateY(-100px);
   }
 }
