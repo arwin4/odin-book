@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Pages
 import Landing from '@pages/Landing';
 import Login from '@pages/Login';
-import Home from '@pages/Home';
 import User from '@pages/User';
 import NewPostForm from '@pages/NewPost';
 import Post from '@pages/Post';
@@ -21,7 +20,7 @@ import postAction from '@pages/actions/postAction';
 // Actions
 import newPostAction from '@pages/actions/newPostAction';
 import landingLoader from '@pages/loaders/landingLoader';
-import Explore from '@pages/Explore';
+import Timeline from '@pages/Timeline';
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -34,12 +33,12 @@ export default function Router() {
       children: [
         {
           index: true,
-          element: <Explore />,
+          element: <Timeline />,
           loader: homeLoader,
         },
         {
           path: 'explore',
-          element: <Explore />,
+          element: <Timeline />,
           loader: exploreLoader,
         },
         {

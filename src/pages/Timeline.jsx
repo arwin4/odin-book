@@ -3,9 +3,8 @@ import Posts from '@components/home/Posts';
 import { Link, useLoaderData, useRevalidator } from 'react-router-dom';
 import { InlineIcon } from '@iconify/react';
 
-export default function Explore() {
+export default function Timeline() {
   const posts = useLoaderData();
-  console.log(posts);
   const revalidator = useRevalidator();
   const intersectionRef = useRef();
 
