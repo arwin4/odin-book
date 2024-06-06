@@ -8,7 +8,7 @@
   }
 
   place-self: center;
-  width: 90dvw;
+  max-width: 90dvw;
 
   padding: 10px 0;
 
