@@ -13,11 +13,7 @@
 
   font-weight: 500;
 
-  background: linear-gradient(
-    0deg,
-    hsl(45, 68%, 79%) -50%,
-    hsl(240, 17%, 94%) 100%
-  );
+  background: var(--button-background);
   color: black;
 
   border-radius: 1px;
