@@ -9,9 +9,10 @@ export default function CommentForm({ post }) {
 
   const [commentFieldFocused, setCommentFieldFocused] = useState(false);
 
-  // Emtpy field on submit
+  // Reset form on submit
   useEffect(() => {
     commentFieldRef.current.value = '';
+    commentFieldRef.current.blur();
   }, [fetcher.state]);
 
   return (
