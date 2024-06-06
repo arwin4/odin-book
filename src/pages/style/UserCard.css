@@ -11,21 +11,47 @@
 
   margin-bottom: 25px;
 
-  background: lavender;
+  border: var(--default-border);
+  border-width: 3px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0px 0px hsl(0, 0%, 0%, 0.3);
+
   background-color: var(--selective-yellow);
-  border: 5px solid var(--persimmon);
 
   text-align: center;
 
   .avatar-wrapper {
+    position: relative;
     display: grid;
     justify-items: center;
-    gap: 10px;
+    gap: 20px;
 
     .avatar {
       width: 100px;
-      border-radius: 50%;
-      border: 5px solid var(--tangerine);
+      border-radius: 20px;
+      border: 2px solid black;
+    }
+
+    .change-avatar-button {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+
+      height: 40px;
+      width: 40px;
+      padding: 2px;
+
+      background: linear-gradient(
+        0deg,
+        hsl(45, 68%, 79%) -50%,
+        hsl(240, 17%, 94%) 100%
+      );
+      border: 2px solid black;
+      border-radius: 40%;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

@@ -7,6 +7,7 @@ import { useFetcher } from 'react-router-dom';
 import LabelButton from '@components/buttons/LabelButton';
 
 import './style/Avatar.css';
+import { InlineIcon } from '@iconify/react';
 
 export default function Avatar({ user }) {
   const changeAvatarModal = useRef();
@@ -22,11 +23,16 @@ export default function Avatar({ user }) {
   return (
     <div className="avatar-wrapper">
       <img src={user.attributes.avatarUrl} alt="" className="avatar" />
+
       {isCurrentUser && (
-        <LabelButton
+        <button
+          className="change-avatar-button"
+          type="button"
+          aria-label="change-avatar"
           onClick={() => changeAvatarModal.current.showModal()}
-          text="Change avatar"
-        />
+        >
+          <InlineIcon icon="ph:pencil-simple-duotone" height="unset" />
+        </button>
       )}
 
       <Dialog
