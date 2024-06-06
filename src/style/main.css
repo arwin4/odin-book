@@ -36,6 +36,11 @@ html {
   justify-content: center;
 }
 
+.loading {
+  transition: 0.1s 0.2s ease-out;
+  opacity: 0.8;
+}
+
 main {
   width: 100%;
   max-width: 1000px;
