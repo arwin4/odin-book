@@ -1,4 +1,4 @@
-import Navigation from '@components/navigation/Navigation';
+import NavBar from '@components/navbar/NavBar';
 import React from 'react';
 import { Navigate, useRouteError } from 'react-router-dom';
 import './style/Error.css';
@@ -11,7 +11,7 @@ export default function Error() {
     case 404:
       return (
         <>
-          <Navigation />
+          <NavBar />
           <div className="error">
             <h1>404</h1>
             <h2>{error.data}</h2>
@@ -24,7 +24,7 @@ export default function Error() {
     default:
       return (
         <>
-          <Navigation />
+          <NavBar />
           <div className="error">
             <h1>An error occurred.</h1>
             <h2>{error.message}</h2>

@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 import getCurrentUser from '@utils/getCurrentUser';
 
-import './style/Navigation.css';
+import './style/NavBar.css';
 
-export default function Navigation() {
+export default function NavBar() {
   const currentUser = getCurrentUser();
   const navBarRef = useRef();
 

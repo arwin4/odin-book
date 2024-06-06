@@ -1,12 +1,12 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import RequireAuth from '@components/auth/RequireAuth';
-import Navigation from '@components/navigation/Navigation';
+import NavBar from '@components/navbar/NavBar';
 
 export default function RequireAuthLayout() {
   return (
     <RequireAuth>
-      <Navigation />
+      <NavBar />
       <main>
         <Outlet />
       </main>
