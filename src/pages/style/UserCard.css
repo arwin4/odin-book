@@ -1,72 +1,80 @@
-.user-card {
-  align-self: center;
-
+.user-card-container {
   display: grid;
-  gap: 25px;
-  padding: 10px;
-  align-items: center;
-  justify-items: center;
-
-  width: min(80%, 500px);
-
+  width: 100vw;
+  background-color: lavender;
   margin-bottom: 25px;
 
-  border: var(--default-border);
-  border-width: 3px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 0px 0px hsl(0, 0%, 0%, 0.3);
-
-  background-color: var(--selective-yellow);
-
-  text-align: center;
-
-  .avatar-wrapper {
-    position: relative;
+  .user-card {
     display: grid;
+    gap: 25px;
+    padding: 20px 10px;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: min(100%, 700px);
+    justify-self: center;
+
     justify-items: center;
-    gap: 20px;
+    text-align: center;
 
-    .avatar {
-      width: 100px;
-      border-radius: 20px;
-      border: 2px solid black;
-    }
+    .avatar-wrapper {
+      align-self: center;
+      position: relative;
+      display: grid;
+      justify-items: center;
+      gap: 20px;
 
-    .change-avatar-button {
-      position: absolute;
-      right: 0px;
-      bottom: 0px;
+      .avatar {
+        width: 100px;
+        border-radius: 20px;
+      }
 
-      height: 40px;
-      width: 40px;
-      padding: 2px;
+      .change-avatar-button {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
 
-      background: linear-gradient(
-        0deg,
-        hsl(45, 68%, 79%) -50%,
-        hsl(240, 17%, 94%) 100%
-      );
-      border: 2px solid black;
-      border-radius: 40%;
+        height: 40px;
+        width: 40px;
+        padding: 2px;
 
-      &:hover {
-        cursor: pointer;
+        background: linear-gradient(
+          0deg,
+          hsl(45, 68%, 79%) -50%,
+          hsl(240, 17%, 94%) 100%
+        );
+        border-radius: 40%;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
-  }
 
-  .info-wrapper {
-    display: grid;
+    .info-wrapper {
+      display: grid;
+      justify-items: center;
 
-    .name-wrapper {
-      .first-name {
-        font-weight: bolder;
-        font-size: larger;
+      .name-wrapper {
+        margin-bottom: 10px;
+
+        .first-name {
+          font-weight: bolder;
+          font-size: larger;
+        }
+
+        .username {
+          opacity: 0.8;
+        }
+      }
+
+      .follower-count {
+        margin-bottom: 5px;
+      }
+
+      .follow-user > * {
+        margin-top: 10px;
+        max-width: 100px;
       }
     }
-  }
-
-  .follow-user > * {
-    max-width: 100px;
   }
 }

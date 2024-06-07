@@ -24,14 +24,16 @@ function UserCard({ user }) {
   const isCurrentUser = user.id === getCurrentUser().id;
 
   return (
-    <div className="user-card">
-      <Avatar user={user} />
-      <div className="info-wrapper">
-        <NameWrapper user={user} />
-        <FollowerCount user={user} />
-        <Bio user={user} />
+    <div className="user-card-container">
+      <div className="user-card">
+        <Avatar user={user} />
+        <div className="info-wrapper">
+          <NameWrapper user={user} />
+          <FollowerCount user={user} />
+          <Bio user={user} />
+          {!isCurrentUser && <FollowButton user={user} />}
+        </div>
       </div>
-      {!isCurrentUser && <FollowButton user={user} />}
     </div>
   );
 }
