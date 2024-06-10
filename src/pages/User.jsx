@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useFetcher, useLoaderData } from 'react-router-dom';
+
+import useAuth from '@hooks/useAuth';
 
 import userPropType from '@propTypes/user';
 import getCurrentUser from '@utils/getCurrentUser';
@@ -8,6 +10,7 @@ import Avatar from '@components/user/Avatar';
 
 import './style/UserCard.css';
 import LabelButton from '@components/buttons/LabelButton';
+import Dialog from '@components/dialog/Dialog';
 
 export default function User() {
   const { user, posts } = useLoaderData();
@@ -32,6 +35,8 @@ function UserCard({ user }) {
           <FollowerCount user={user} />
           <Bio user={user} />
           {!isCurrentUser && <FollowButton user={user} />}
+
+          {isCurrentUser && <Logout />}
         </div>
       </div>
     </div>
@@ -89,6 +94,30 @@ function FollowerCount({ user }) {
 
 function Bio({ user }) {
   return <div className="bio">{user.attributes.bio}</div>;
+}
+
+function Logout() {
+  const { logout } = useAuth();
+  const confirmLogoutModal = useRef();
+
+  return (
+    <>
+      <LabelButton
+        text="Sign out"
+        onClick={() => confirmLogoutModal.current.showModal()}
+      />
+      <Dialog title="Sign out?" icon="ph:sign-out" ref={confirmLogoutModal}>
+        <div className="confirmation">
+          <div>
+            <LabelButton text="Confirm" onClick={logout} />
+          </div>
+          <form className="cancel-btn" method="dialog">
+            <LabelButton text="Cancel" type="submit" />
+          </form>
+        </div>
+      </Dialog>
+    </>
+  );
 }
 
 /* Prop Types */
