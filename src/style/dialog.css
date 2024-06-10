@@ -48,7 +48,7 @@ dialog {
     padding: 0 25px;
     gap: 20px;
 
-    background-color: var(--selective-yellow);
+    background-color: var(--contrast-foreground);
 
     .icon {
       height: 30px;

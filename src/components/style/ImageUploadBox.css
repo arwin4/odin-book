@@ -11,7 +11,7 @@
   margin: 25px;
   z-index: 0;
 
-  background-color: var(--selective-yellow);
+  background-color: var(--card-background-color);
 
   .content-wrapper {
     /* Prevent drag events from being fired on elements in the dropbox */

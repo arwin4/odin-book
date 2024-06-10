@@ -9,5 +9,5 @@
   border-radius: var(--default-border-radius);
   box-shadow: var(--default-box-shadow);
 
-  background-color: var(--selective-yellow);
+  background-color: var(--card-background-color);
 }

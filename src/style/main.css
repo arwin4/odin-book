@@ -4,11 +4,9 @@ html {
   /* == Variables == */
 
   /* Colors */
-  --tekhelet: hsla(246, 46%, 37%, 1);
-  --medium-slate-blue: hsla(239, 77%, 70%, 1);
-  --selective-yellow: hsla(45, 99%, 49%, 1);
-  /* --alt-selective-yellow: rgb(255, 221, 119); */
-  --selective-yellow: rgb(255, 221, 119);
+  --background-color: hsla(239, 77%, 70%, 1);
+  --card-background-color: lavender;
+  --contrast-foreground: rgb(255, 221, 119);
   --tangerine: hsla(34, 99%, 47%, 1);
   --persimmon: hsla(22, 97%, 48%, 1);
 
@@ -28,7 +26,7 @@ html {
     hsl(240, 17%, 94%) 100%
   );
 
-  background-color: var(--medium-slate-blue);
+  background-color: var(--background-color);
 }
 
 * {
