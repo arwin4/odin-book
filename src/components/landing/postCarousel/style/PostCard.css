@@ -10,8 +10,6 @@
   place-self: center;
   max-width: 90dvw;
 
-  padding: 10px 0;
-
   border: var(--default-border);
   border-radius: var(--default-border-radius);
   box-shadow: var(--default-box-shadow);
@@ -66,6 +64,9 @@
   }
 
   .date {
+    position: relative;
+    margin-top: -30px;
+    top: 25px;
     width: fit-content;
     align-self: end;
 
@@ -91,6 +92,9 @@
     .media {
       max-height: 75dvh;
       max-width: 100%;
+
+      /* Prevent extra padding */
+      display: block;
     }
   }
 
