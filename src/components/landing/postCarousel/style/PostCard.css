@@ -16,17 +16,15 @@
   border-radius: var(--default-border-radius);
   box-shadow: var(--default-box-shadow);
 
-  background-color: var(--selective-yellow);
+  background-color: hsl(45, 100%, 82%);
 
   .author-label {
     display: flex;
     align-items: center;
     gap: 20px;
-    background-color: gold;
+    background-color: var(--selective-yellow);
 
-    --border: 1px solid black;
-    border-top: var(--border);
-    border-bottom: var(--border);
+    box-shadow: 0px 0px 2px 0px hsl(0, 0%, 0%, 0.6);
 
     text-decoration: none;
     color: inherit;
@@ -73,16 +71,16 @@
 
     font-size: smaller;
 
-    padding: 2px;
+    padding: 2px 4px;
     padding-top: 0;
 
     margin-bottom: 10px;
 
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
     border-bottom-left-radius: 10px;
 
-    background-color: goldenrod;
+    background-color: var(--selective-yellow);
+
+    box-shadow: 0px 1px 1px 0px hsl(0, 0%, 0%, 0.6);
 
     .icon {
       margin-right: 5px;
