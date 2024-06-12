@@ -85,14 +85,13 @@
     }
   }
 
-  .media-container {
-    .media {
-      max-height: 75dvh;
-      max-width: 100%;
+  .media {
+    max-height: 75dvh;
+    max-width: 100%;
 
-      /* Prevent extra padding */
-      display: block;
-    }
+    /* Prevent extra padding */
+    display: block;
+    object-fit: contain;
   }
 
   .meta {
