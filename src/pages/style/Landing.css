@@ -25,9 +25,7 @@
     max-height: 400px;
     gap: 20px;
 
-    /* TODO: prevent scroll off */
-
-    animation: scroll 300s forwards linear infinite;
+    animation: scroll 100s forwards linear infinite;
 
     .post-card {
       box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.371);
@@ -48,6 +46,6 @@
     transform: translateX(-150px) perspective(5000px) skewX(-8deg);
   }
   100% {
-    transform: translateX(-4000px) perspective(5000px) skewX(-8deg);
+    transform: translateX(-3500px) perspective(5000px) skewX(-8deg);
   }
 }

@@ -17,6 +17,9 @@ export default function PostCarousel() {
       {posts.map((post) => (
         <SmallPostCard post={post} key={post.id} interactable={false} />
       ))}
+      {posts.map((post) => (
+        <SmallPostCard post={post} key={post.id} interactable={false} />
+      ))}
     </div>
   );
 }
