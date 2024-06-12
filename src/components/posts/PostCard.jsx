@@ -8,14 +8,21 @@ import commentsPropType from '@propTypes/comments';
 import postPropType from '@propTypes/post';
 import React, { useState } from 'react';
 
+import './style/PostCard.css';
+import { Link } from 'react-router-dom';
+
 export default function PostCard({ post, comments }) {
   const [commentsVisible, setCommentsVisible] = useState(false);
+  const { username } = post.relationships.author.data.attributes;
 
   const toggleCommentsVisibility = () => setCommentsVisible(!commentsVisible);
 
   return (
     <div className="post-card">
-      <AuthorLabel post={post} />
+      <Link to={`/user/${username}`}>
+        <AuthorLabel post={post} />
+      </Link>
+
       <DateLabel post={post} />
       <MediaContainer post={post} />
       <Meta

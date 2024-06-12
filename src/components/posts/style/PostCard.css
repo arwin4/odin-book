@@ -3,10 +3,6 @@
   flex-direction: column;
   text-align: center;
 
-  &:has(.nested-post) {
-    position: absolute;
-  }
-
   place-self: center;
   max-width: 90dvw;
 
@@ -16,19 +12,21 @@
 
   background-color: var(--card-background-color);
 
-  .author-label {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background-color: var(--card-background-color);
-    box-shadow: 0px 0px 2px 0px hsl(0, 0%, 0%, 0.6);
-
+  a {
     text-decoration: none;
     color: inherit;
 
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  .author-label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--card-background-color);
+    box-shadow: 0px 0px 2px 0px hsl(0, 0%, 0%, 0.6);
 
     .avatar {
       width: 40px;
@@ -201,10 +199,5 @@
         font-size: smaller;
       }
     }
-  }
-
-  .nested-post {
-    position: relative;
-    right: 15px;
   }
 }

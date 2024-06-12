@@ -36,9 +36,20 @@ html {
   font-family: 'Red Hat Display', sans-serif;
 }
 
+body {
+  &:has(.landing-container) {
+    margin: 0;
+  }
+}
+
 #root {
   display: flex;
   justify-content: center;
+
+  &:has(.landing-container) {
+    height: 100vh;
+    align-items: center;
+  }
 }
 
 .loading {
