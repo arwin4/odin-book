@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AuthorLabel from '@components/landing/postCarousel/AuthorLabel';
-import DateLabel from '@components/landing/postCarousel/DateLabel';
-import MediaContainer from '@components/landing/postCarousel/MediaContainer';
 import postPropType from '@propTypes/post';
 import { Link } from 'react-router-dom';
 
 import './style/PostCard.css';
+import AuthorLabel from '@components/PostCard/AuthorLabel';
+import DateLabel from '@components/PostCard/DateLabel';
+import MediaContainer from '@components/PostCard/MediaContainer';
 
 export default function SmallPostCard({ post, interactable = true }) {
   const { username } = post.relationships.author.data.attributes;

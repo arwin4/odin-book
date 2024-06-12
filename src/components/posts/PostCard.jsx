@@ -1,15 +1,15 @@
-import AuthorLabel from '@components/landing/postCarousel/AuthorLabel';
-import CommentForm from '@components/landing/postCarousel/CommentForm';
-import Comments from '@components/landing/postCarousel/Comments';
-import DateLabel from '@components/landing/postCarousel/DateLabel';
-import MediaContainer from '@components/landing/postCarousel/MediaContainer';
-import Meta from '@components/landing/postCarousel/Meta';
 import commentsPropType from '@propTypes/comments';
 import postPropType from '@propTypes/post';
 import React, { useState } from 'react';
 
 import './style/PostCard.css';
 import { Link } from 'react-router-dom';
+import AuthorLabel from '@components/PostCard/AuthorLabel';
+import DateLabel from '@components/PostCard/DateLabel';
+import MediaContainer from '@components/PostCard/MediaContainer';
+import Meta from '@components/PostCard/Meta';
+import CommentForm from '@components/PostCard/CommentForm';
+import Comments from '@components/PostCard/Comments';
 
 export default function PostCard({ post, comments }) {
   const [commentsVisible, setCommentsVisible] = useState(false);

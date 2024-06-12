@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import './style/PostCarousel.css';
 import SmallPostCard from '@components/posts/SmallPostCard';
 
 export default function PostCarousel() {
