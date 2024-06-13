@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 
+import './style/Login.css';
+
 export default function Login() {
   const { login, authed } = useAuth();
   const { state } = useLocation();
@@ -24,6 +26,13 @@ export default function Login() {
       setLoginErrors(errors);
     }
     // setLoginBusy(false);
+  }
+
+  async function loginUsingDemoAccount(e) {
+    const form = e.currentTarget.parentNode;
+    const submitEvent = new SubmitEvent('submit', { submitter: form });
+    submitEvent.submitter.username.value = 'demo';
+    submitEvent.submitter.password.value = 'demo';
   }
 
   return (
@@ -63,6 +72,9 @@ export default function Login() {
           busy={loginBusy}
         /> */}
         <button type="submit">Log in</button>
+        <button onClick={loginUsingDemoAccount} type="submit">
+          Demo
+        </button>
       </form>
 
       {/* <div className="signup-container">
