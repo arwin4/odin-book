@@ -71,3 +71,13 @@ main {
 .disable-transition {
   transition: none !important;
 }
+
+.fade-out {
+  animation: fade-out 0.2s forwards ease;
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+}

@@ -37,7 +37,32 @@
   }
 
   .call-to-action {
-    padding-bottom: 5px;
+    display: grid;
+    column-gap: 20px;
+    row-gap: 15px;
+
+    padding-bottom: 60px;
+
+    .guest-account-tip {
+      grid-row: 2 / span 2;
+      grid-column: 1 / span 2;
+      text-align: end;
+      column-gap: 5px;
+
+      display: grid;
+      align-items: end;
+      grid-auto-flow: column;
+
+      transform: rotate(-2deg);
+
+      .icon {
+        position: relative;
+        bottom: 5px;
+        height: 30px;
+        /* color: var(--tangerine); */
+        /* color: var(--contrast-foreground); */
+      }
+    }
   }
 }
 
