@@ -48,7 +48,8 @@
     column-gap: 20px;
     row-gap: 15px;
 
-    padding-bottom: 60px;
+    margin-top: 10px;
+    padding-bottom: 10px;
 
     .guest-account-tip {
       grid-row: 2 / span 2;
