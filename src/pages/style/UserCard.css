@@ -39,15 +39,17 @@
         width: 40px;
         padding: 2px;
 
-        background: linear-gradient(
-          0deg,
-          hsl(45, 68%, 79%) -50%,
-          hsl(240, 17%, 94%) 100%
-        );
-        border-radius: 40%;
+        background: var(--button-background);
+        border-radius: 20%;
 
         &:hover {
           cursor: pointer;
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--persimmon);
+          border: none;
+          border-width: 2px;
         }
       }
     }
