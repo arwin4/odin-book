@@ -49,4 +49,8 @@
       order: 1;
     }
   }
+
+  &.disabled {
+    background: var(--button-disabled);
+  }
 }
