@@ -7,20 +7,24 @@ import Login from '@pages/Login';
 import User from '@pages/User';
 import NewPostForm from '@pages/NewPost';
 import Post from '@pages/Post';
+import Timeline from '@pages/Timeline';
+import Signup from '@pages/Signup';
 import Error from '@pages/Error';
 
 // Loaders
 import homeLoader from '@pages/loaders/homeLoader';
 import exploreLoader from '@pages/loaders/exploreLoader';
 import userLoader from '@pages/loaders/userLoader';
-import userAction from '@pages/actions/userAction';
+import landingLoader from '@pages/loaders/landingLoader';
 import postLoader from '@pages/loaders/postLoader';
-import postAction from '@pages/actions/postAction';
 
 // Actions
 import newPostAction from '@pages/actions/newPostAction';
-import landingLoader from '@pages/loaders/landingLoader';
-import Timeline from '@pages/Timeline';
+import signupAction from '@pages/actions/signupAction';
+import userAction from '@pages/actions/userAction';
+import postAction from '@pages/actions/postAction';
+
+// Layouts
 import RequireAuthLayout from './layouts/RequireAuthLayout';
 
 export default function Router() {
@@ -69,7 +73,12 @@ export default function Router() {
     {
       path: '/login',
       element: <Login />,
-      // TODO: Merge login and landing
+    },
+    {
+      path: '/signup',
+      element: <Signup />,
+      action: signupAction,
+      errorElement: <Error />,
     },
   ]);
 
