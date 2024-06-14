@@ -1,13 +1,16 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import React, { useState } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 
 import './style/Login.css';
+import LabelButton from '@components/buttons/LabelButton';
 
 export default function Login() {
   const { login, authed } = useAuth();
   const { state } = useLocation();
+  const loginRef = useRef();
+  const navigate = useNavigate();
 
   const [loginErrors, setLoginErrors] = useState(null);
   // const [loginBusy, setLoginBusy] = useState(false);
@@ -35,57 +38,53 @@ export default function Login() {
     submitEvent.submitter.password.value = 'demo';
   }
 
+  const goToSignup = () => {
+    loginRef.current.classList.add('fade-out');
+    setTimeout(() => {
+      navigate('/signup');
+    }, 250);
+  };
+
   return (
-    <div className="login">
-      <h2>Log in</h2>
-
-      {loginErrors ? (
-        <div className="errors">
-          {loginErrors?.map((error) => (
-            <p key={error.title}>{error.title}</p>
-          ))}
-        </div>
-      ) : undefined}
-
-      <form onSubmit={handleLogin}>
-        <label htmlFor="username">
-          Username
-          <input type="text" id="username" name="username" required autoFocus />
-        </label>
-
-        <label htmlFor="password">
-          Password
+    <main>
+      <div className="login" ref={loginRef}>
+        <h1>Log in</h1>
+        {loginErrors ? (
+          <div className="errors">
+            {loginErrors?.map((error) => (
+              <p key={error.title}>{error.title}</p>
+            ))}
+          </div>
+        ) : undefined}
+        <form onSubmit={handleLogin}>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+            autoFocus
+          />
           <input
             type="password"
             name="password"
             id="password"
             autoComplete="on"
+            placeholder="Password"
             required
           />
-        </label>
-
-        {/* <LabelButton
-          icon="ri:arrow-right-double-fill"
-          inline="true"
-          text="Log in"
-          type="submit"
-          busy={loginBusy}
-        /> */}
-        <button type="submit">Log in</button>
-        <button onClick={loginUsingDemoAccount} type="submit">
-          Demo
-        </button>
-      </form>
-
-      {/* <div className="signup-container">
-        <Link to="/signup">
-          <LinkButton
-            icon="ri:arrow-right-double-fill"
-            text="Sign up in 10 seconds"
-            inline="true"
+          <LabelButton text="Log in" type="submit" />
+          <div className="or">
+            <span className="dash" /> or <span className="dash" />
+          </div>
+          <LabelButton
+            text="Use demo account"
+            onClick={(e) => loginUsingDemoAccount(e)}
+            type="submit"
           />
-        </Link>
-      </div> */}
-    </div>
+          <LabelButton text="Sign up" onClick={goToSignup} />
+        </form>
+      </div>
+    </main>
   );
 }
