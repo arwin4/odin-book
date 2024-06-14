@@ -3,28 +3,37 @@ import LabelButton from '@components/buttons/LabelButton';
 import React, { useRef } from 'react';
 
 import fadeThenNavigate from '@utils/fadeThenNavigate';
-import { useActionData, useFetcher, useNavigate } from 'react-router-dom';
+import {
+  Form,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from 'react-router-dom';
 
 import './style/Login.css';
 
 export default function Signup() {
   const navigate = useNavigate();
+  const navigation = useNavigation();
+  const errors = useActionData();
   const signupRef = useRef();
-  const signupErrors = useActionData();
-  const fetcher = useFetcher();
+
+  const errorElement = errors ? (
+    <div className="errors">
+      {errors?.map((error) => (
+        <p key={error.title}>{error.title}</p>
+      ))}
+    </div>
+  ) : undefined;
 
   return (
     <main>
       <div className="signup" ref={signupRef}>
         <h1>Sign up</h1>
-        {signupErrors ? (
-          <div className="errors">
-            {signupErrors?.map((error) => (
-              <p key={error.title}>{error.title}</p>
-            ))}
-          </div>
-        ) : undefined}
-        <fetcher.Form method="POST">
+
+        {errorElement}
+
+        <Form method="POST">
           <input
             type="text"
             id="username"
@@ -33,7 +42,7 @@ export default function Signup() {
             maxLength={30}
             required
             autoComplete="username"
-            disabled={fetcher.state !== 'idle'}
+            disabled={navigation.state !== 'idle'}
             autoFocus
           />
           <input
@@ -43,7 +52,7 @@ export default function Signup() {
             placeholder="First name"
             maxLength={30}
             autoComplete="given-name"
-            disabled={fetcher.state !== 'idle'}
+            disabled={navigation.state !== 'idle'}
             required
           />
           <input
@@ -54,13 +63,13 @@ export default function Signup() {
             placeholder="Password (min. 3 characters)"
             minLength={3}
             maxLength={64}
-            disabled={fetcher.state !== 'idle'}
+            disabled={navigation.state !== 'idle'}
             required
           />
           <LabelButton
             text="Sign up"
             type="submit"
-            disabled={fetcher.state !== 'idle'}
+            disabled={navigation.state !== 'idle'}
           />
           <div className="or">
             <span className="dash" /> or <span className="dash" />
@@ -69,7 +78,7 @@ export default function Signup() {
             text="Go to login"
             onClick={() => fadeThenNavigate(signupRef, '/login', navigate)}
           />
-        </fetcher.Form>
+        </Form>
       </div>
     </main>
   );
