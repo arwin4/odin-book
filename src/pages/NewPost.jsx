@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, useNavigation } from 'react-router-dom';
+import { useFetcher } from 'react-router-dom';
 
 import './style/NewPost.css';
 import ImageUploadBox from '@components/ImageUploadBox';
@@ -13,12 +13,12 @@ import LabelButton from '@components/buttons/LabelButton';
  */
 
 export default function NewPostForm() {
-  const navigation = useNavigation();
-  const uploading = navigation.state !== 'idle';
+  const fetcher = useFetcher();
+  const uploading = fetcher.state !== 'idle';
 
   return (
     <div className="new-post">
-      <Form
+      <fetcher.Form
         className="new-post-form"
         method="post"
         encType="multipart/form-data"
@@ -41,7 +41,7 @@ export default function NewPostForm() {
           name="submit"
           text={uploading ? 'Posting...' : 'Post'}
         />
-      </Form>
+      </fetcher.Form>
     </div>
   );
 }
