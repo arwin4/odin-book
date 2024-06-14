@@ -28,7 +28,7 @@ export default function Login() {
     // setLoginBusy(false);
   }
 
-  async function loginUsingDemoAccount(e) {
+  function loginUsingDemoAccount(e) {
     const form = e.currentTarget.parentNode;
     const submitEvent = new SubmitEvent('submit', { submitter: form });
     submitEvent.submitter.username.value = 'demo';
