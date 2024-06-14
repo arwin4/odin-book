@@ -17,13 +17,9 @@
   color: black;
 
   border-radius: 1px;
-  border-width: 4px;
-  border-style: solid;
-  border-left-color: var(--tangerine);
-  border-top-color: var(--tangerine);
-  border-right-color: var(--persimmon);
-  border-bottom-color: var(--persimmon);
-  border-radius: 10px 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0px 0px hsl(0, 0%, 0%, 0.3);
 
   .icon {
     height: 30px;
@@ -34,8 +30,8 @@
     cursor: pointer;
 
     border-color: var(--persimmon);
-    border-radius: 10px 5px;
-    outline: 3px solid black;
+    outline: 2px solid var(--persimmon);
+    box-shadow: none;
   }
 
   &.inline {
