@@ -17,7 +17,7 @@ export default function Login() {
   const [loginBusy, setLoginBusy] = useState(false);
 
   if (authed) {
-    return <Navigate to={state?.path || '/'} />;
+    return <Navigate to={state?.path || '/explore'} />;
     // FIXME: Implement after login button on Landing sends state
   }
 
