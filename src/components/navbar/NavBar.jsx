@@ -14,9 +14,9 @@ export default function NavBar() {
     window.addEventListener('scroll', () => {
       // NOTE: Also fires when window is resized
       if (window.scrollY > lastScrollPosition) {
-        navBarRef.current.classList.remove('show-on-scroll-up');
+        navBarRef.current?.classList.remove('show-on-scroll-up');
       } else if (window.scrollY < lastScrollPosition) {
-        navBarRef.current.classList.add('show-on-scroll-up');
+        navBarRef.current?.classList.add('show-on-scroll-up');
       }
       lastScrollPosition = window.scrollY;
     });
