@@ -25,6 +25,12 @@ html {
     hsl(45, 68%, 79%) -50%,
     hsl(240, 17%, 94%) 100%
   );
+  --button-background: linear-gradient(
+    0deg,
+    hsl(45, 68%, 79%) -50%,
+    hsl(45, 100%, 81%) 100%
+  );
+  --button-disabled: hsl(42, 19%, 83%);
 
   background-color: var(--background-color);
 }

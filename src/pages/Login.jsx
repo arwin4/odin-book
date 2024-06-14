@@ -14,7 +14,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const [loginErrors, setLoginErrors] = useState(null);
-  // const [loginBusy, setLoginBusy] = useState(false);
+  const [loginBusy, setLoginBusy] = useState(false);
 
   if (authed) {
     return <Navigate to={state?.path || '/'} />;
@@ -22,17 +22,20 @@ export default function Login() {
   }
 
   async function handleLogin(e) {
-    // setLoginBusy(true);
+    setLoginBusy(true);
     const res = await login(e);
     if (!res.ok) {
       const resJson = await res.json();
       const { errors } = resJson;
       setLoginErrors(errors);
     }
-    // setLoginBusy(false);
+    setLoginBusy(false);
   }
 
   function loginUsingDemoAccount(e) {
+    setLoginBusy(true);
+    e.target.classList.add('disabled');
+
     const form = e.currentTarget.parentNode;
     const submitEvent = new SubmitEvent('submit', { submitter: form });
     submitEvent.submitter.username.value = 'demo';
@@ -57,6 +60,7 @@ export default function Login() {
             name="username"
             placeholder="Username"
             required
+            disabled={loginBusy}
             autoFocus
           />
           <input
@@ -66,8 +70,9 @@ export default function Login() {
             autoComplete="on"
             placeholder="Password"
             required
+            disabled={loginBusy}
           />
-          <LabelButton text="Log in" type="submit" />
+          <LabelButton text="Log in" type="submit" disabled={loginBusy} />
           <div className="or">
             <span className="dash" /> or <span className="dash" />
           </div>

@@ -3,7 +3,7 @@ import LabelButton from '@components/buttons/LabelButton';
 import React, { useRef } from 'react';
 
 import fadeThenNavigate from '@utils/fadeThenNavigate';
-import { Form, useActionData, useNavigate } from 'react-router-dom';
+import { useActionData, useFetcher, useNavigate } from 'react-router-dom';
 
 import './style/Login.css';
 
@@ -11,6 +11,7 @@ export default function Signup() {
   const navigate = useNavigate();
   const signupRef = useRef();
   const signupErrors = useActionData();
+  const fetcher = useFetcher();
 
   return (
     <main>
@@ -23,7 +24,7 @@ export default function Signup() {
             ))}
           </div>
         ) : undefined}
-        <Form method="POST">
+        <fetcher.Form method="POST">
           <input
             type="text"
             id="username"
@@ -32,6 +33,7 @@ export default function Signup() {
             maxLength={30}
             required
             autoComplete="username"
+            disabled={fetcher.state !== 'idle'}
             autoFocus
           />
           <input
@@ -41,6 +43,7 @@ export default function Signup() {
             placeholder="First name"
             maxLength={30}
             autoComplete="given-name"
+            disabled={fetcher.state !== 'idle'}
             required
           />
           <input
@@ -51,9 +54,14 @@ export default function Signup() {
             placeholder="Password (min. 3 characters)"
             minLength={3}
             maxLength={64}
+            disabled={fetcher.state !== 'idle'}
             required
           />
-          <LabelButton text="Sign up" type="submit" />
+          <LabelButton
+            text="Sign up"
+            type="submit"
+            disabled={fetcher.state !== 'idle'}
+          />
           <div className="or">
             <span className="dash" /> or <span className="dash" />
           </div>
@@ -61,7 +69,7 @@ export default function Signup() {
             text="Go to login"
             onClick={() => fadeThenNavigate(signupRef, '/login', navigate)}
           />
-        </Form>
+        </fetcher.Form>
       </div>
     </main>
   );

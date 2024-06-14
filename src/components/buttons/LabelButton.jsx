@@ -16,8 +16,9 @@ export default function LabelButton({
   value = null,
   formMethod = null,
   busy = false,
+  disabled = false,
 }) {
-  const btnClass = classNames('label-btn', { inline, busy });
+  const btnClass = classNames('label-btn', { inline, busy, disabled });
   const spinnerIcon = 'svg-spinners:ring-resize';
 
   return (
@@ -50,4 +51,5 @@ LabelButton.propTypes = {
   text: PropTypes.string,
   type: PropTypes.string,
   busy: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
