@@ -14,7 +14,6 @@
     border-radius: var(--default-border-radius);
     box-shadow: var(--default-box-shadow);
 
-    background-color: var(--card-background-color);
     background-color: var(--contrast-foreground);
   }
 
