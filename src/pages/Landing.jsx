@@ -6,6 +6,7 @@ import PostCarousel from '@components/landing/postCarousel/PostCarousel';
 import './style/Landing.css';
 import LabelButton from '@components/buttons/LabelButton';
 import { InlineIcon } from '@iconify/react';
+import fadeThenNavigate from '@utils/fadeThenNavigate';
 
 export default function Landing() {
   // const { authed } = useAuth();
@@ -18,13 +19,6 @@ export default function Landing() {
   const landingRef = useRef();
   const navigate = useNavigate();
 
-  const enter = () => {
-    landingRef.current.classList.add('fade-out');
-    setTimeout(() => {
-      navigate('/login');
-    }, 250);
-  };
-
   return (
     <div className="landing-container" ref={landingRef}>
       <h1 className="title">Odinstagram</h1>
@@ -32,8 +26,14 @@ export default function Landing() {
       <PostCarousel />
 
       <div className="call-to-action">
-        <LabelButton text="Sign up »" onClick={enter} />
-        <LabelButton text="Log in »" onClick={enter} />
+        <LabelButton
+          text="Sign up »"
+          onClick={() => fadeThenNavigate(landingRef, '/signup', navigate)}
+        />
+        <LabelButton
+          text="Log in »"
+          onClick={() => fadeThenNavigate(landingRef, '/login', navigate)}
+        />
         <div className="guest-account-tip">
           <div className="text">Guest account available</div>
           <InlineIcon

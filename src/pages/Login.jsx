@@ -5,6 +5,7 @@ import useAuth from '@hooks/useAuth';
 
 import './style/Login.css';
 import LabelButton from '@components/buttons/LabelButton';
+import fadeThenNavigate from '@utils/fadeThenNavigate';
 
 export default function Login() {
   const { login, authed } = useAuth();
@@ -37,13 +38,6 @@ export default function Login() {
     submitEvent.submitter.username.value = 'demo';
     submitEvent.submitter.password.value = 'demo';
   }
-
-  const goToSignup = () => {
-    loginRef.current.classList.add('fade-out');
-    setTimeout(() => {
-      navigate('/signup');
-    }, 250);
-  };
 
   return (
     <main>
@@ -82,7 +76,10 @@ export default function Login() {
             onClick={(e) => loginUsingDemoAccount(e)}
             type="submit"
           />
-          <LabelButton text="Sign up" onClick={goToSignup} />
+          <LabelButton
+            text="Sign up"
+            onClick={() => fadeThenNavigate(loginRef, '/signup', navigate)}
+          />
         </form>
       </div>
     </main>
