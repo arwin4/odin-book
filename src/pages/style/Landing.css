@@ -4,6 +4,14 @@
   flex-direction: column;
   align-items: center;
 
+  mask-image: linear-gradient(
+    to right,
+    hsla(0, 0%, 0%, 0.3),
+    black 10%,
+    black 90%,
+    hsla(0, 0%, 0%, 0.3)
+  );
+
   .title {
     justify-self: center;
     width: 250px;
