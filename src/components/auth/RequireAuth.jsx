@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import useAuth from '@hooks/useAuth';
 
 export default function RequireAuth({ children }) {
   const { authed, setAuthed } = useAuth();
-  const location = useLocation();
 
   // Check if already logged in
   useEffect(() => {
@@ -24,11 +23,7 @@ export default function RequireAuth({ children }) {
     }
   }, []);
 
-  return authed === true ? (
-    children
-  ) : (
-    <Navigate to="/login" replace state={{ path: location.pathname }} />
-  );
+  return authed === true ? children : <Navigate to="/welcome" />;
 }
 
 RequireAuth.propTypes = {
