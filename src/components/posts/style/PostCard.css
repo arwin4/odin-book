@@ -121,6 +121,8 @@
       :last-child {
         justify-self: start;
         grid-column-start: 3;
+
+        text-decoration: none;
       }
     }
   }

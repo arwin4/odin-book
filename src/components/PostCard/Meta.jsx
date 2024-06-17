@@ -49,12 +49,17 @@ export default function Meta({ post, comments, toggleCommentsVisibility }) {
             onClick={() => confirmPostDeletionModal.current.showModal()}
           />
         )}
-        <LabelButton
-          icon="ph:chat-centered-text"
-          inline="true"
+        <a
+          href="#comments-container"
           onClick={() => toggleCommentsVisibility()}
-          text={comments.length.toString()}
-        />
+          aria-label="Toggle comments"
+        >
+          <LabelButton
+            icon="ph:chat-centered-text"
+            inline="true"
+            text={comments.length.toString()}
+          />
+        </a>
       </div>
 
       <Dialog

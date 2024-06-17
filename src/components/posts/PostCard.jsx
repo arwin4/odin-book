@@ -13,6 +13,7 @@ import Comments from '@components/PostCard/Comments';
 
 export default function PostCard({ post, comments }) {
   const [commentsVisible, setCommentsVisible] = useState(false);
+
   const { username } = post.relationships.author.data.attributes;
 
   const toggleCommentsVisibility = () => setCommentsVisible(!commentsVisible);
@@ -31,10 +32,10 @@ export default function PostCard({ post, comments }) {
         toggleCommentsVisibility={toggleCommentsVisibility}
       />
       {commentsVisible && (
-        <>
+        <div id="comments-container">
           <CommentForm post={post} />
           <Comments comments={comments} />
-        </>
+        </div>
       )}
     </div>
   );

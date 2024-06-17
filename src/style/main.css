@@ -33,6 +33,9 @@ html {
   --button-disabled: hsl(42, 19%, 83%);
 
   background-color: var(--background-color);
+
+  /* Enable smooth scrolling when comments are toggled on posts */
+  scroll-behavior: smooth;
 }
 
 * {
