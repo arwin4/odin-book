@@ -23,7 +23,7 @@ export default function RequireAuth({ children }) {
     }
   }, []);
 
-  return authed === true ? children : <Navigate to="/welcome" />;
+  return authed === true ? children : <Navigate to="/" />;
 }
 
 RequireAuth.propTypes = {

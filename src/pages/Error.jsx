@@ -22,7 +22,7 @@ export default function Error() {
       );
     case 401:
       // Unauthorized
-      return <Navigate to="/login" />;
+      return <Navigate to="/welcome" />;
     default:
       return (
         <>
