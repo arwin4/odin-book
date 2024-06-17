@@ -5,13 +5,18 @@ import postPropType from '@propTypes/post';
 import './style/UserPosts.css';
 import userPropType from '@propTypes/user';
 import { Link } from 'react-router-dom';
+import getCurrentUser from '@utils/getCurrentUser';
 
 export default function UserPosts({ posts, user }) {
+  const isCurrentUser = user.id === getCurrentUser().id;
+
   if (posts.length === 0)
     return (
       <div className="user-posts">
         <div className="no-posts">
-          {user.attributes.firstName} has not posted anything yet.
+          {isCurrentUser
+            ? `You haven't posted anything yet.`
+            : `${user.attributes.firstName} hasn't posted anything yet.`}
         </div>
       </div>
     );
