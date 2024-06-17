@@ -27,7 +27,7 @@ dialog {
   background-color: whitesmoke;
 
   @media (min-width: 768px) {
-    /* Place dialog in cenr if the screen is not mobile */
+    /* Place dialog in center if the screen is not mobile */
     margin-block-end: auto;
     border-block-end-width: 2px;
   }
