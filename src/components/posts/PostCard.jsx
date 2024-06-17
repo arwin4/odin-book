@@ -34,7 +34,7 @@ export default function PostCard({ post, comments }) {
       {commentsVisible && (
         <div id="comments-container">
           <CommentForm post={post} />
-          <Comments comments={comments} />
+          <Comments comments={comments} post={post} />
         </div>
       )}
     </div>

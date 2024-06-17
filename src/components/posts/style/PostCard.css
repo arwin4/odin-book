@@ -161,7 +161,7 @@
     gap: 10px;
 
     > ::before {
-      grid-column: 1/3;
+      grid-column: 1/4;
       content: '';
       outline: 1px solid black;
       outline-style: dashed;
@@ -194,10 +194,25 @@
         }
       }
 
-      .content {
+      .content-wrapper {
+        display: flex;
+
         text-align: initial;
-        font-style: normal;
-        font-size: smaller;
+
+        .label-btn {
+          align-self: center;
+          margin-right: 10px;
+
+          min-width: unset;
+          max-width: 15px;
+          max-height: 15px;
+        }
+
+        .content {
+          align-self: center;
+          font-style: normal;
+          font-size: smaller;
+        }
       }
     }
   }

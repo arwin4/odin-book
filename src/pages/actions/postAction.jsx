@@ -5,6 +5,7 @@ export default async function postAction({ request }) {
   const data = await request.formData();
   const intent = data.get('intent');
   const postId = data.get('post-id');
+  const commentId = data.get('comment-id');
 
   let res;
 
@@ -36,6 +37,7 @@ export default async function postAction({ request }) {
     );
   }
 
+  // Handle post comment
   if (intent === 'post-comment') {
     res = await fetch(
       `${import.meta.env.VITE_API_SERVER_URL}/posts/${postId}/comments`,
@@ -53,6 +55,20 @@ export default async function postAction({ request }) {
             },
           },
         }),
+      },
+    );
+  }
+
+  // Handle delete comment
+  if (intent === 'delete-comment') {
+    res = await fetch(
+      `${import.meta.env.VITE_API_SERVER_URL}/posts/${postId}/comments/${commentId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${getJwt()}`,
+          'Content-Type': 'application/json',
+        },
       },
     );
   }
