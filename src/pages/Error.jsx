@@ -33,6 +33,7 @@ export default function Error() {
           <div className="error">
             <h1>An error occurred.</h1>
             <h2>{error.message}</h2>
+            <h2>{error.statusText}</h2>
           </div>
         </main>
       );
