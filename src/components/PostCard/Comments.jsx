@@ -42,40 +42,39 @@ export default function Comments({ post, comments }) {
               )}
               <cite className="content">{content}</cite>
             </div>
-
-            <Dialog
-              title="Delete comment?"
-              icon="ph:trash"
-              ref={confirmDeleteCommentModal}
-            >
-              <div className="confirmation">
-                <fetcher.Form
-                  method="DELETE"
-                  onSubmit={() => confirmDeleteCommentModal.current.close()}
-                >
-                  <input
-                    type="hidden"
-                    name="comment-id"
-                    value={commentIdToBeDeleted}
-                  />
-                  <input type="hidden" name="post-id" value={post.id} />
-                  <LabelButton
-                    icon="ph:trash"
-                    text="Confirm"
-                    type="submit"
-                    name="intent"
-                    value="delete-comment"
-                    busy={fetcher.state !== 'idle'}
-                  />
-                </fetcher.Form>
-                <form className="cancel-btn" method="dialog">
-                  <LabelButton text="Cancel" type="submit" method="dialog" />
-                </form>
-              </div>
-            </Dialog>
           </div>
         );
       })}
+      <Dialog
+        title="Delete comment?"
+        icon="ph:trash"
+        ref={confirmDeleteCommentModal}
+      >
+        <div className="confirmation">
+          <fetcher.Form
+            method="DELETE"
+            onSubmit={() => confirmDeleteCommentModal.current.close()}
+          >
+            <input
+              type="hidden"
+              name="comment-id"
+              value={commentIdToBeDeleted}
+            />
+            <input type="hidden" name="post-id" value={post.id} />
+            <LabelButton
+              icon="ph:trash"
+              text="Confirm"
+              type="submit"
+              name="intent"
+              value="delete-comment"
+              busy={fetcher.state !== 'idle'}
+            />
+          </fetcher.Form>
+          <form className="cancel-btn" method="dialog">
+            <LabelButton text="Cancel" type="submit" method="dialog" />
+          </form>
+        </div>
+      </Dialog>
     </div>
   );
 }
