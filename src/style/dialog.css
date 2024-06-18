@@ -1,7 +1,8 @@
 dialog {
   --list-spacing: 10px;
 
-  display: grid; /* Enables fading out, not just fading in */
+  /* Enables fading out, not just fading in */
+  display: unset;
 
   margin: auto;
   padding: 0px;
