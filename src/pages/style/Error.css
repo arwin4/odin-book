@@ -3,6 +3,8 @@
   text-align: center;
   justify-content: center;
 
+  padding: 20px;
+
   width: 300px;
 
   border: var(--default-border);
