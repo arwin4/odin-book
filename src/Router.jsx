@@ -26,9 +26,32 @@ import postAction from '@pages/actions/postAction';
 
 // Layouts
 import RequireAuthLayout from './layouts/RequireAuthLayout';
+import AccessLayout from './layouts/AccessLayout';
 
 export default function Router() {
   const router = createBrowserRouter([
+    {
+      path: 'welcome',
+      element: <Landing />,
+      loader: landingLoader,
+      errorElement: <Error />,
+    },
+    {
+      path: '/',
+      element: <AccessLayout />,
+      children: [
+        {
+          path: 'login',
+          element: <Login />,
+        },
+        {
+          path: 'signup',
+          element: <Signup />,
+          action: signupAction,
+        },
+      ],
+      errorElement: <Error />,
+    },
     {
       path: '/',
       // Layout function wraps any of its children inside <RequireAuth>
@@ -63,22 +86,6 @@ export default function Router() {
           action: newPostAction,
         },
       ],
-    },
-    {
-      path: 'welcome',
-      element: <Landing />,
-      loader: landingLoader,
-      errorElement: <Error />,
-    },
-    {
-      path: '/login',
-      element: <Login />,
-    },
-    {
-      path: '/signup',
-      element: <Signup />,
-      action: signupAction,
-      errorElement: <Error />,
     },
   ]);
 
