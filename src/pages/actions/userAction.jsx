@@ -52,44 +52,47 @@ export default async function userAction({ request }) {
       redirect: 'follow',
     };
 
-    let publicId;
-
     try {
+      // Upload to Cloudinary
       res = await fetch(
         'https://api.cloudinary.com/v1_1/dg2fuzzhq/image/upload/',
         requestOptions,
       );
+
+      if (!res.ok) {
+        throw new Error();
+      }
+
+      // Extract resource id
       const parsedRes = await res.json();
+      const publicId = parsedRes.public_id;
 
-      publicId = parsedRes.public_id;
-    } catch (error) {
-      // TODO: handle error
-    }
-
-    // TODO: try...catch
-    res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/users/avatar`, {
-      method: 'PATCH',
-      headers: {
-        Authorization: `Bearer ${getJwt()}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          type: 'avatars',
-          attributes: {
-            publicId,
-          },
+      // Set new avatar
+      res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/users/avatar`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${getJwt()}`,
+          'Content-Type': 'application/json',
         },
-      }),
-    });
+        body: JSON.stringify({
+          data: {
+            type: 'avatars',
+            attributes: {
+              publicId,
+            },
+          },
+        }),
+      });
 
-    // console.log(await res.json());
-    // return redirect('');
-  }
-
-  if (!res.ok) {
-    const { errors } = await res.json();
-    return errors;
+      if (!res.ok) {
+        throw new Error();
+      }
+    } catch (error) {
+      throw new Response('Fetch error', {
+        statusText: 'Failed to upload the image.',
+        status: res?.status,
+      });
+    }
   }
 
   // Prevent fetcher.data (error) from persisting
