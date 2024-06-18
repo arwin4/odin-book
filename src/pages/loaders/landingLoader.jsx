@@ -4,8 +4,8 @@ export default async function landingLoader() {
   });
 
   if (!res.ok) {
-    // const { errors } = await res.json();
-    // throw new Response(errors[0].title, { status: res.status });
+    const { errors } = await res.json();
+    throw new Response(errors[0].title, { status: res.status });
   }
   const parsedFetchedPosts = await res.json();
   return parsedFetchedPosts.data;
