@@ -25,15 +25,12 @@ export default function Error() {
       return <Navigate to="/welcome" />;
     default:
       return (
-        <>
-          <NavBar />
           <main>
             <div className="error">
               <h1>An error occurred.</h1>
               <h2>{error.message}</h2>
             </div>
           </main>
-        </>
       );
   }
 }
