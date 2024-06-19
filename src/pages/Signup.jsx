@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-autofocus */
 import LabelButton from '@components/buttons/LabelButton';
 import React from 'react';
 
@@ -41,7 +40,6 @@ export default function Signup() {
           required
           autoComplete="username"
           disabled={navigation.state !== 'idle'}
-          autoFocus
         />
         <input
           type="text"

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-autofocus */
 import React, { useState } from 'react';
 import { Navigate, useNavigate, useOutletContext } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
@@ -61,7 +60,6 @@ export default function Login() {
           placeholder="Username"
           required
           disabled={loginBusy}
-          autoFocus
         />
         <input
           type="password"
