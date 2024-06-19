@@ -13,17 +13,28 @@
     hsla(0, 0%, 0%, 0.3)
   );
 
-  .title {
+  .title-wrapper {
+    display: flex;
     justify-self: center;
-    width: 250px;
-
-    padding: 10px 25px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 260px;
+    height: 70px;
 
     border: var(--default-border);
     border-radius: var(--default-border-radius);
     box-shadow: var(--default-box-shadow);
 
     background-color: var(--contrast-foreground);
+
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    .logo {
+      width: 50px;
+    }
   }
 
   .post-carousel {

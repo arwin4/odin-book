@@ -21,7 +21,10 @@ export default function Landing() {
 
   return (
     <div className="landing-container" ref={landingRef}>
-      <h1 className="title">Odinstagram</h1>
+      <div className="title-wrapper">
+        <img src="src/assets/logo.png" alt="Logo" className="logo" />
+        <h1 className="title">Odinstagram</h1>
+      </div>
 
       <PostCarousel />
 
