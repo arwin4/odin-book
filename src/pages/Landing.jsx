@@ -8,7 +8,7 @@ import LabelButton from '@components/buttons/LabelButton';
 import fadeThenNavigate from '@utils/fadeThenNavigate';
 
 import './style/Landing.css';
-import logo from './assets/logo.png';
+import logo from './assets/logo.avif';
 
 export default function Landing() {
   const landingRef = useRef();
