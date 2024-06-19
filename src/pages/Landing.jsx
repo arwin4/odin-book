@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
-import useAuth from '@hooks/useAuth';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PostCarousel from '@components/landing/postCarousel/PostCarousel';
 
 import './style/Landing.css';
@@ -9,13 +8,6 @@ import { InlineIcon } from '@iconify/react';
 import fadeThenNavigate from '@utils/fadeThenNavigate';
 
 export default function Landing() {
-  // const { authed } = useAuth();
-  // const { state } = useLocation();
-
-  // if (authed) {
-  //   return <Navigate to={state?.path || '/'} />;
-  // }
-
   const landingRef = useRef();
   const navigate = useNavigate();
 
