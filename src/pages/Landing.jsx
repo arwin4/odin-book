@@ -1,11 +1,14 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { InlineIcon } from '@iconify/react';
+
 import PostCarousel from '@components/landing/postCarousel/PostCarousel';
+import LabelButton from '@components/buttons/LabelButton';
+
+import fadeThenNavigate from '@utils/fadeThenNavigate';
 
 import './style/Landing.css';
-import LabelButton from '@components/buttons/LabelButton';
-import { InlineIcon } from '@iconify/react';
-import fadeThenNavigate from '@utils/fadeThenNavigate';
+import logo from './assets/logo.png';
 
 export default function Landing() {
   const landingRef = useRef();
@@ -14,7 +17,7 @@ export default function Landing() {
   return (
     <div className="landing-container" ref={landingRef}>
       <div className="title-wrapper">
-        <img src="assets/logo.png" alt="Logo" className="logo" />
+        <img src={logo} alt="Logo" className="logo" />
         <h1 className="title">Odinstagram</h1>
       </div>
 
