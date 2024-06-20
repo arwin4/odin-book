@@ -33,7 +33,6 @@ function UserCard({ user }) {
         <div className="info-wrapper">
           <NameWrapper user={user} />
           <FollowerCount user={user} />
-          <Bio user={user} />
           {!isCurrentUser && <FollowButton user={user} />}
 
           {isCurrentUser && <Logout />}
