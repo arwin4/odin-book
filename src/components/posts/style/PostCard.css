@@ -101,6 +101,7 @@
       padding: 10px;
       margin-top: 10px;
       margin-bottom: 5px;
+      word-break: break-all;
     }
 
     .interaction-wrapper {
@@ -212,6 +213,7 @@
           align-self: center;
           font-style: normal;
           font-size: smaller;
+          word-break: break-all;
         }
       }
     }
