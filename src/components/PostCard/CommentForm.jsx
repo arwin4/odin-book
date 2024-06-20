@@ -27,6 +27,7 @@ export default function CommentForm({ post }) {
         autoComplete="off"
         onFocus={() => setCommentFieldFocused(true)}
         onBlur={() => setCommentFieldFocused(false)}
+        maxLength={500}
         required
       />
       {(commentFieldFocused || commentFieldRef.current?.value !== '') && (
