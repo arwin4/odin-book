@@ -22,25 +22,30 @@ export default async function newPostAction({ request }) {
 
   let imageUrl;
 
+  let res;
   try {
-    const res = await fetch(
+    res = await fetch(
       'https://api.cloudinary.com/v1_1/dg2fuzzhq/image/upload/',
       requestOptions,
     );
-    const parsedRes = await res.json();
-    imageUrl = parsedRes.secure_url;
-  } catch (error) {
-    // TODO: handle error
-  }
 
-  // Mock:
-  // const imageUrl =
-  //   'https://res.cloudinary.com/dg2fuzzhq/image/upload/v1715851737/post/gsxzt0vduusv3dnyp8re.avif';
+    if (!res.ok) {
+      throw new Error();
+    }
+  } catch (error) {
+    throw new Response('Fetch error', {
+      statusText: 'Failed to post.',
+      status: res?.status,
+    });
+  }
 
   let postId;
 
   try {
-    const res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/posts`, {
+    const parsedCloudinaryRes = await res.json();
+    imageUrl = parsedCloudinaryRes.secure_url;
+
+    res = await fetch(`${import.meta.env.VITE_API_SERVER_URL}/posts`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${getJwt()}`,
@@ -57,14 +62,17 @@ export default async function newPostAction({ request }) {
       }),
     });
 
+    if (!res.ok) {
+      throw new Error();
+    }
+
     const parsedRes = await res.json();
     postId = parsedRes.data.id;
-
-    if (!res.ok) {
-      // TODO
-    }
-  } catch (err) {
-    // TODO
+  } catch (error) {
+    throw new Response('Fetch error', {
+      statusText: 'Failed to post.',
+      status: res?.status,
+    });
   }
 
   return redirect(`/post/${postId}`);
