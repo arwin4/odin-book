@@ -29,6 +29,7 @@ export default function LabelButton({
       name={name}
       value={value}
       formMethod={formMethod}
+      disabled={busy || disabled}
     >
       <InlineIcon
         className="icon"
