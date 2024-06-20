@@ -26,7 +26,6 @@ export default function Meta({ post, comments, toggleCommentsVisibility }) {
   );
 
   return (
-    // TODO: description / comments shouldn't expand width
     <div className="meta">
       <cite className="description">{description}</cite>
       <div className="interaction-wrapper">
