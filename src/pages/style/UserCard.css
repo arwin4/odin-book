@@ -1,6 +1,6 @@
 .user-card-container {
   display: grid;
-  width: 100%;
+  width: max(300px, 60%);
   background-color: lavender;
   margin-bottom: 25px;
 
@@ -11,7 +11,7 @@
     gap: 25px;
     padding: 20px 0;
 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     max-width: min(100%, 700px);
     justify-self: center;
 
